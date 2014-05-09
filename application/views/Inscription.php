@@ -5,11 +5,9 @@
 
 <body>
 
-	<form method="post" action="">
-		<label for="connexion">Deja inscrit ?</label>
-		<input type="submit" name="connexion" value="Connectez-vous !"/>
-		</br>
+	<a href="connexion">Connectez-vous !</a>
 
+	<form method="post" action="">
 		<label for="pseudo">Pseudo : </label>
 		<input type="text" name="pseudo" value="<?php echo set_value('pseudo'); ?>" />
 		<?php echo form_error('pseudo'); ?>

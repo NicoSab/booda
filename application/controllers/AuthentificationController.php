@@ -7,6 +7,7 @@ class AuthentificationController extends CI_Controller
 		parent::__construct();
 
 		$this->load->database();
+		$this->load->library('form_validation');
 		$this->load->model('Authentification_model', 'A_model');
 	}
 
@@ -17,11 +18,6 @@ class AuthentificationController extends CI_Controller
 
 	public function inscription()
 	{
-		//	Chargement de la bibliothèque
-		echo "inscription";
-
-		$this->load->library('form_validation');
-
 		$this->form_validation->set_rules('pseudo', '"Pseudo"', 'trim|required|max_length[52]|alpha_dash|encode_php_tags|xss_clean');
 		$this->form_validation->set_rules('mdp', '"Mot de passe"', 'trim|required|max_length[52]|alpha_dash|encode_php_tags|xss_clean');
 		$this->form_validation->set_rules('sex', '"Sexe"', 'trim|required|max_length[52]|alpha_dash|encode_php_tags|xss_clean');
@@ -44,31 +40,39 @@ class AuthentificationController extends CI_Controller
 
 		}
 		else
+		{
 			if ($this->input->post('connexion'))
-				$this->connexion();
+			{
+				return $this->connexion(); 
+			}
 			else
 				$this->load->view('inscription');
+		}
 
 	}
 
 	public function connexion()
 	{
+		$data = array('error' => '');
 
-		echo "connexion";
+		$pseudo = $this->input->post('pseudo');
+		$mdp = $this->input->post('mdp');
 
-		$this->load->library('form_validation');
-
-		$this->form_validation->set_rules('pseudo', '"Pseudo"', 'trim|required|max_length[52]|alpha_dash|encode_php_tags|xss_clean');
-		$this->form_validation->set_rules('mdp', '"Mot de passe"', 'trim|required|max_length[52]|alpha_dash|encode_php_tags|xss_clean');
-
-		if($this->form_validation->run())
+		if ($pseudo && $mdp)
 		{
-			echo ("LOLOLLOL");
+			$user = $this->A_model->get_user($pseudo, $mdp);
+
+			if ($user)
+				$this->load->view('accueil');
+			else
+			{
+				$data['error'] = 'Mauvais pseudo ou mot de passe !';
+				$this->load->view('authentification', $data);	
+			}
 		}
 		else
 		{
-			echo ("ici");
-			$this->load->view('authentification');
+			$this->load->view('authentification', $data);
 		}
 	}
 }
