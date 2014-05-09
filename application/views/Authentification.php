@@ -13,6 +13,8 @@
 		<input type="password" name="mdp" value="" />
 
 		<input type="submit" value="Envoyer" />
+		</br>
+		<?php echo $error; ?>
 	</form>
 </body>
 </html>
