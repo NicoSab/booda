@@ -1,0 +1,286 @@
+body {
+	position: relative;
+	overflow-y: scroll;
+	width: 100%;
+	min-width: 990px;
+	min-height: 100%;
+	margin: 0;
+	padding: 0;
+	color: #3f4752;
+	font: 75%/1.5 Helvetica,Arial,sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+.plain {
+	background: #fff;
+}
+
+.header {
+	position: fixed;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 53px;
+	background-color: rgba(255,255,255,.9);
+}
+
+.center {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+.logoimg {
+	display: block;
+	margin-bottom: 2px;
+}
+#logo {
+	display: inline;
+	position: relative;
+	float: left;
+	width: 100px;
+	height: 29px;
+	margin: 13px 80px 0 0;
+	color: #999;
+	white-space: nowrap;
+	font-size: .92em;
+	line-height: 1;
+	margin-left: 0;
+}
+.fl_r {
+	float: right;
+}
+.submit-buttons {
+	position: relative;
+	margin: 9px 0 0 0;
+	color: #3f4752;
+	font-weight: 700;
+}
+.btn-or {
+	margin: 0 8px;
+}
+.btn {
+	display: inline-block;
+	position: relative;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 5px 0;
+	padding: 8px 12px 9px;
+	cursor: pointer;
+	outline: 0;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	background: transparent;
+	color: #3f4752;
+	vertical-align: middle;
+	text-align: center;
+	text-decoration: none;
+	font: 700 1em Helvetica,Arial,sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+.btn--lg {
+	padding: 13px 19px;
+	border-radius: 5px;
+	font-size: 1.167em;
+}
+.btn--green, a.btn--green {
+	border-color: #15cb3a #00991f #00841c;
+	background: linear-gradient(#00c328,#00ab23);
+	background: -webkit-linear-gradient(#00c328,#00ab23);
+	background-color: #00bb23;
+	color: #fff;
+	text-shadow: 0 -1px rgba(0,0,0,.15);
+}
+.btn--green:hover, .btn--green:focus {
+	background: linear-gradient(#00c228,#009a20);
+	background: -webkit-linear-gradient(#00c228,#009a20);
+	background-color: #00b71a;
+}
+a.btn--orange:hover, a.btn--blue:hover, a.btn--dblue:hover, a.btn--green:hover {
+	color: #fff;
+}
+.btn--orange, a.btn--orange {
+	border-color: #fcb820 #ee7300 #d86100;
+	background: linear-gradient(#fb9500,#fb7400);
+	background: -webkit-linear-gradient(#fb9500,#fb7400);
+	background-color: #fb970a;
+	color: #fff;
+	text-shadow: 0 -1px rgba(0,0,0,.15);
+}
+.btn--orange:hover, .btn--orange:focus {
+	background: linear-gradient(#fb9500,#f35b00);
+	background: -webkit-linear-gradient(#fb9500,#f35b00);
+	background-color: #f68b00;
+}
+.submit-buttons .btn {
+	margin: 0;
+}
+.homepage-header {
+	min-height: 620px;
+	padding-top: 53px;
+}
+.homepage-form-header {
+	position: relative;
+	z-index: 0;
+	height: 820px;
+	max-height: 820px;
+	background: url(/v2/-/-/i/homepage/form-header-bg.6.jpg) repeat-x 0 50% #3d8ca9;
+}
+.homepage-form-header:before {
+	position: absolute;
+	z-index: -1;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	max-width: 1500px;
+	height: 100%;
+	content: '';
+}
+.homepage-col {
+	display: inline-block;
+	width: 47%;
+	vertical-align: top;
+}
+h1 {
+	margin: 0 0 .25em;
+	font: 2em/1 Helvetica,Arial,sans-serif;
+}
+
+.homepage-title {
+	margin-bottom: 21px;
+	color: #fff;
+	text-shadow: 0 2px rgba(0,0,0,.15);
+	font: 4.167em/1 Helvetica,Arial,sans-serif;
+}
+.homepage-form-header .homepage-title {
+	margin-top: 55px;
+	font-size: 4.25em;
+}
+p {
+	margin: 0 0 15px;
+	font-size: 1.084em;
+	line-height: 1.385;
+}
+.homepage-text {
+	color: #fff;
+	text-shadow: 0 2px rgba(0,0,0,.15);
+	font: 2.167em/1.231 Helvetica,Arial,sans-serif;
+}
+.homepage-form-header .homepage-text {
+	font-size: 2.417em;
+}
+.sign-form {
+	position: relative;
+	border-radius: 5px;
+}
+.sign-form--light {
+	padding: 0px 20px 34px 20px;
+	background: #fff;
+	background: rgba(255,255,255,.6);
+}
+.homepage-form-header .sign-form {
+	width: 340px;
+	margin-top: 40px;
+}
+form, fieldset, ul, dl, dt, dd, table, td, th, img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.form {
+	margin: 0;
+	padding: 0;
+	font: 1em Arial,sans-serif;
+}
+.sign-form--light .form {
+	margin: 0 -29px;
+	padding: 28px 29px 0 29px;
+	border-right: 0;
+	border-left: 0;
+	border-radius: 5px;
+}
+.sign-form h2 {
+	margin: 0 0 8px 0;
+	color: #3f4752;
+	font: 1.833em/1 Helvetica,Arial,sans-serif;
+}
+button, input, select, textarea {
+	margin: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+button, input, textarea {
+	font: 1.09em/1.235 Arial,sans-serif;
+}
+input, textarea {
+	vertical-align: top;
+}
+.inp_txt, input[type="email"], input[type="password"], input[type="tel"], input[type="text"] {
+	height: 25px;
+	padding: 3px 4px 5px;
+	border: 1px solid #CFCFCF;
+	border-color: #494949 #CFCFCF #CFCFCF #494949;
+	border-radius: 0;
+	background: #FFF;
+	color: #000;
+	line-height: 1.2;
+}
+input.inp_txt, input[type="email"], input[type="password"], input[type="tel"], *|input[type="text"] {
+	padding: 3px 4px;
+	line-height: 17px;
+}
+input.input-text, input.input-email, input.input-password, input.input-search, .textarea {
+	display: inline-block;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	height: 34px;
+	margin: 5px 0;
+	padding: 8px 10px;
+	border: 1px solid #c4c7cc;
+	border-radius: 2px;
+	background: #fff;
+	vertical-align: middle;
+	font: 1em/1.333333333 Arial,sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+.form__row > label, .form__row > .label, .form__label {
+	display: inline-block;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding-right: 11px;
+	text-align: right;
+}
+.form label, .form .label {
+	display: inline-block;
+	vertical-align: middle;
+	font: 1em/1.5 Arial,sans-serif;
+}
+.sign-form__forgot {
+	padding-top: 7px;
+	padding-bottom: 8px;
+	font-size: 1.083em;
+}
+.sign-form__forgot {
+	padding-top: 7px;
+	padding-bottom: 8px;
+	font-size: 1.083em;
+}
+a, .btn-lnk {
+	cursor: pointer;
+	outline: 0;
+	color: #365bd4;
+}
+a:hover, .js span.change:hover, a.hovered, .editing a.edit, .btn-lnk:hover {
+	color: #FF5223;
+}
+.sign-form__forgot a {
+	color: #3f4752;
+}
+.sign-form__agreement a:hover, .sign-form__forgot a:hover {
+	color: #365bd4;
+}
+.sign-form__agreement a:hover, .sign-form__forgot a:hover {
+	color: #365bd4;
+}
