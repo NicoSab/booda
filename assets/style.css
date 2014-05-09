@@ -245,6 +245,13 @@ input.input-text, input.input-email, input.input-password, input.input-search, .
 	font: 1em/1.333333333 Arial,sans-serif;
 	-webkit-font-smoothing: antialiased;
 }
+.form__label {
+	float: left;
+}
+.form__row {
+	position: relative;
+	padding: 0;
+}
 .form__row > label, .form__row > .label, .form__label {
 	display: inline-block;
 	-moz-box-sizing: border-box;
@@ -256,6 +263,14 @@ input.input-text, input.input-email, input.input-password, input.input-search, .
 	display: inline-block;
 	vertical-align: middle;
 	font: 1em/1.5 Arial,sans-serif;
+}
+.signup-page .form__label:before {
+content: '';
+display: inline-block;
+width: 43px;
+height: 43px;
+margin: 0 -15px;
+vertical-align: middle;
 }
 .sign-form__forgot {
 	padding-top: 7px;
@@ -283,4 +298,23 @@ a:hover, .js span.change:hover, a.hovered, .editing a.edit, .btn-lnk:hover {
 }
 .sign-form__agreement a:hover, .sign-form__forgot a:hover {
 	color: #365bd4;
+}
+.form__field {
+	margin-left: 30%;
+}
+.sign-page {
+	margin: 0 14%;
+}
+.sign-page .form {
+	float: left;
+	width: 440px;
+}
+.signup-page {
+	min-height: 520px;
+}
+#wrap
+{
+	width: 100%;
+	min-width: 990px;
+	margin-top: 100px;
 }
