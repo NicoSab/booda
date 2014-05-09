@@ -14,7 +14,7 @@
 		<div class="submit-buttons fl_r" id="join">
 			<span class="btn-or">
 				Déjà membre ?</span>
-				<a href="connexion" class="btn btn--orange">
+				<a href="<?php echo site_url('auth/connexion'); ?>" class="btn btn--orange">
 					Identifie-toi
 				</a>
 			</div>

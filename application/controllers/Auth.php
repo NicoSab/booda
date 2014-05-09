@@ -10,7 +10,6 @@ class Auth extends CI_Controller
 		$this->load->library('session');
 		$this->load->library('form_validation');
 		$this->load->model('UserModel', 'A_model');
-
 	}
 
 	public function index()
@@ -83,6 +82,11 @@ class Auth extends CI_Controller
 		{
 			redirect('welcome/index', 'refresh');
 		}
+	}
+	public function logout()
+	{
+ 		$this->session->sess_destroy();
+ 		redirect('welcome/index', 'refresh');
 	}
 	public function forgotpassword()
 	{

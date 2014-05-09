@@ -13,9 +13,8 @@
 		</div>
 		<div class="submit-buttons fl_r" id="join">
 			<span class="btn-or">
-				Déjà membre ?</span>
-				<a href="connexion" class="btn btn--orange">
-					Identifie-toi
+				<a href="<?php echo site_url('auth/logout'); ?>" class="btn btn--orange">
+					Déconnexion
 				</a>
 			</div>
 		</div>
@@ -23,24 +22,9 @@
 	<div id="wrap">
 		<div class="sign-page signup-page">
 			<div class="sign-title">
-				<h1>Mot de passe oublié ?</h1>
+				<h1>Derniers bouddhistes inscrits</h1>
 			</div>
 			<div>
-				<form action="" method="post" class="form">
-					<div class="form__row">
-						<div class="form__label">
-							<label for="mail">Email</label>
-						</div>
-						<div class="form__field">
-							<input type="text" name="mail" class="input-text" />
-						</div>
-						<?php echo form_error('mail'); ?>
-					</div>
-		
-					
-						<input type="submit" class="btn btn--orange btn--lg" value="Recevoir un nouveau mot de passe" />
-					</div>
-				</form>
 			</div>
 		</div>
 	</div>
