@@ -24,8 +24,6 @@
 </html>
 
 
-	<a href="connexion">Connectez-vous !</a>
-
 	<form method="post" action="">
 		<label for="pseudo">Pseudo : </label>
 		<input type="text" name="pseudo" value="<?php echo set_value('pseudo'); ?>" />

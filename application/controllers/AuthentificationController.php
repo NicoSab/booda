@@ -59,7 +59,7 @@ class AuthentificationController extends CI_Controller
 			$user = $this->A_model->get_user($pseudo, $mdp);
 
 			$this->session->set_userdata('pseudo', $pseudo);
-			$this->session->set_userdata('id_user', $user->id);
+			$this->session->set_userdata('userId', $user->id);
 
 			if ($user)
 				$this->load->view('accueil');
