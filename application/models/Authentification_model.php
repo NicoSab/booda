@@ -24,6 +24,6 @@ class Authentification_model extends CI_Model
 						->where('Pseudo', $pseudo)
 						->where('Pass', $mdp)
 						->get()
-						->result();
+						->row();
 	}
 }

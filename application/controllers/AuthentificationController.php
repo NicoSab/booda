@@ -7,6 +7,7 @@ class AuthentificationController extends CI_Controller
 		parent::__construct();
 
 		$this->load->database();
+		$this->load->library('session');
 		$this->load->library('form_validation');
 		$this->load->model('Authentification_model', 'A_model');
 	}
@@ -56,6 +57,9 @@ class AuthentificationController extends CI_Controller
 		if ($pseudo && $mdp)
 		{
 			$user = $this->A_model->get_user($pseudo, $mdp);
+
+			$this->session->set_userdata('pseudo', $pseudo);
+			$this->session->set_userdata('userId', $user->id);
 
 			if ($user)
 				$this->load->view('accueil');
