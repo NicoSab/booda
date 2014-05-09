@@ -41,12 +41,7 @@ class AuthentificationController extends CI_Controller
 		}
 		else
 		{
-			if ($this->input->post('connexion'))
-			{
-				return $this->connexion(); 
-			}
-			else
-				$this->load->view('inscription');
+			$this->load->view('inscription');
 		}
 
 	}
