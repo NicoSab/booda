@@ -14,7 +14,7 @@
 		<div class="submit-buttons fl_r" id="join">
 			<span class="btn-or">
 				Déjà membre ?</span>
-				<a href="#" class="btn btn--orange">
+				<a href="<?php echo site_url('auth/connexion'); ?>" class="btn btn--orange">
 					Identifie-toi
 				</a>
 			</div>
@@ -35,6 +35,15 @@
 							<input type="text" name="pseudo" class="input-text" value="<?php echo set_value('pseudo'); ?>" />
 						</div>
 						<?php echo form_error('pseudo'); ?>
+					</div>
+					<div class="form__row">
+						<div class="form__label">
+							<label for="mail">Email</label>
+						</div>
+						<div class="form__field">
+							<input type="text" name="mail" class="input-text" value="<?php echo set_value('mail'); ?>" />
+						</div>
+						<?php echo form_error('mail'); ?>
 					</div>
 					<div class="form__row">
 						<div class="form__label">

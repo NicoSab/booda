@@ -1,6 +1,6 @@
 <?php
 
-class Profil_model extends CI_Model
+class ProfileModel extends CI_Model
 {
 	private $table = 'Profils';
 	

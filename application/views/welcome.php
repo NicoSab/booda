@@ -14,7 +14,7 @@
 			<div class="submit-buttons fl_r" id="join">
 				<span class="btn-or">
 					Pas encore membre ?</span>
-					<a href="#" class="btn btn--orange">
+					<a href="<?php echo site_url('auth/inscription'); ?>" class="btn btn--orange">
 						Rejoindre Booda
 					</a>
 				</div>
@@ -35,17 +35,25 @@
 					<div class="homepage-col">
 						<div class="sign-form sign-form--light fl_r js-homepage-top-form">
 							<div>
-								<form action="" method="post" class="no_autoloader form js-signin" novalidate>
+								<form action="<?php echo site_url('auth/connexion'); ?>" method="post" class="no_autoloader form js-signin" novalidate>
 									<h2>
 										Identifie-toi sur Booda</h2>
-										<input type="hidden" name="rt" value="41c567">
+										<?php if( isset($info)): ?>
+										<div class="alert alert-success">
+											<?php echo($info) ?>
+										</div>
+										<?php elseif( isset($error)): ?>
+										<div class="alert alert-error">
+											<?php echo($error) ?>
+										</div>
+										<?php endif; ?>
 										<div class="form__row">
 											<div class="form__label">
-												<label for="email">
-													Adresse email</label>
+												<label for="pseudo">
+													Pseudo</label>
 												</div>
 												<div class="form__field">
-													<input type="email" name="email" id="email1" class="input-email autofocus">
+													<input type="text" name="pseudo" id="pseudo" class="input-text autofocus">
 												</div>
 											</div>
 											<div class="form__row">
@@ -82,7 +90,7 @@
 														<div class="form__row sign-form__forgot">
 															<div class="form__field">
 
-																<a href="forgot">
+																<a href="<?php echo site_url('auth/forgotpassword'); ?>">
 																	Mot de passe oublié ?</a>
 																</div>
 

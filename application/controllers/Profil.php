@@ -1,6 +1,6 @@
 <?php
 
-class Profil_Controller extends CI_Controller
+class Profil extends CI_Controller
 {
 	private $first = true;
 
@@ -12,7 +12,7 @@ class Profil_Controller extends CI_Controller
 		$this->load->library('session');
 		$this->load->library('form_validation');
 		$this->load->helpers(array('url', 'assets'));
-		$this->load->model('Profil_model', 'P_model');
+		$this->load->model('ProfileModel', 'P_model');
 	}
 
 	public function update_profil()
@@ -49,7 +49,7 @@ class Profil_Controller extends CI_Controller
 	public function see_profil()
 	{
 		if ($first)
-			redirect('/profil_controller/update_profil', 'refresh');
+			redirect('/profil/update_profil', 'refresh');
 		else
 			$this->load->view('see_profil');
 	}

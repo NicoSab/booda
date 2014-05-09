@@ -318,3 +318,16 @@ a:hover, .js span.change:hover, a.hovered, .editing a.edit, .btn-lnk:hover {
 	min-width: 990px;
 	margin-top: 100px;
 }
+.alert
+{
+
+}
+.alert-error
+{
+	color: #ec6b5b;
+}
+
+.alert-info
+{
+	color:#84EC5B;
+}

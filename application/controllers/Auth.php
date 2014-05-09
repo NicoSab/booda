@@ -1,6 +1,6 @@
 <?php
 
-class AuthentificationController extends CI_Controller
+class Auth extends CI_Controller
 {
 	public function __construct()
 	{
@@ -9,7 +9,8 @@ class AuthentificationController extends CI_Controller
 		$this->load->database();
 		$this->load->library('session');
 		$this->load->library('form_validation');
-		$this->load->model('Authentification_model', 'A_model');
+		$this->load->model('UserModel', 'A_model');
+
 	}
 
 	public function index()
@@ -37,8 +38,16 @@ class AuthentificationController extends CI_Controller
 			$city = $this->input->post('city');
 			$mail = $this->input->post('mail');
 
-			$this->A_model->add_user($pseudo, $mdp, $firstname, $name, $sex, $BD, $city, $mail);
-
+			try
+			{
+				$this->A_model->add_user($pseudo, $mdp, $firstname, $name, $sex, $BD, $city, $mail);
+				$info = "Inscription réussie";
+				redirect('welcome/index?info='.$info, 'refresh');
+			}
+			catch (Exception $e)
+			{
+				var_dump($e->getMessage());
+			}
 		}
 		else
 		{
@@ -52,26 +61,51 @@ class AuthentificationController extends CI_Controller
 		$data = array('error' => '');
 
 		$pseudo = $this->input->post('pseudo');
-		$mdp = $this->input->post('mdp');
+		$mdp = $this->input->post('password');
 
 		if ($pseudo && $mdp)
 		{
 			$user = $this->A_model->get_user($pseudo, $mdp);
 
-			$this->session->set_userdata('pseudo', $pseudo);
-			$this->session->set_userdata('userId', $user->id);
-
 			if ($user)
-				$this->load->view('accueil');
+			{
+				$this->session->set_userdata('pseudo', $pseudo);
+				$this->session->set_userdata('userId', $user->id);
+				redirect('welcome/index', 'refresh');
+			}
 			else
 			{
 				$data['error'] = 'Mauvais pseudo ou mot de passe !';
-				$this->load->view('authentification', $data);	
+				$this->load->view('welcome', $data);	
 			}
 		}
 		else
 		{
-			$this->load->view('authentification', $data);
+			redirect('welcome/index', 'refresh');
 		}
+	}
+	public function forgotpassword()
+	{
+		$data = array('error' => '', 'info' => '');
+
+		$email = $this->input->post('mail');
+
+		if ($email)
+		{
+			$user = $this->A_model->get_user_by_mail($email);
+			if ($user)
+			{
+				$this->sendpassword($user);
+				$data['info'] = 'Mot de passe envoyé';
+				$this->load->view('forgotpassword', $data);
+			}
+			else
+				$data['error'] = 'Mail introuvable';
+		}
+		else
+		{
+			$this->load->view('forgotpassword');
+		}
+		$this->load->view('forgotpassword', $data);
 	}
 }

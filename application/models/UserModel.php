@@ -1,6 +1,6 @@
 <?php
 
-class Authentification_model extends CI_Model
+class UserModel extends CI_Model
 {
 	private $table = 'Users';
 	
@@ -23,6 +23,14 @@ class Authentification_model extends CI_Model
 						->from($this->table)
 						->where('Pseudo', $pseudo)
 						->where('Pass', $mdp)
+						->get()
+						->row();
+	}
+	public function get_user_by_email($email)
+	{
+		return $this->db->select()
+						->from($this->table)
+						->where('Mail', $email)
 						->get()
 						->row();
 	}
