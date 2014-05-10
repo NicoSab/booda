@@ -17,6 +17,8 @@ class Chat extends CI_Controller
 
 	public function conversation()
 	{
+		$this->output->set_header("refresh:30;url=".base_url()."index.php/chat/conversation"); 
+
 		$userId = $this->session->userdata('userId');
 		$convId = 1;
 
