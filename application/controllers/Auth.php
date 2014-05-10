@@ -29,7 +29,7 @@ class Auth extends CI_Controller
 		{
 
 			$pseudo = $this->input->post('pseudo');
-			$mdp = $this->input->post('mdp');
+			$mdp = md5($this->input->post('mdp'));
 			$firstname = $this->input->post('firstname');
 			$name = $this->input->post('name');
 			$sex = $this->input->post('sex');
@@ -64,7 +64,7 @@ class Auth extends CI_Controller
 
 		if ($pseudo && $mdp)
 		{
-			$user = $this->A_model->get_user($pseudo, $mdp);
+			$user = $this->A_model->get_user($pseudo, md5($mdp));
 
 			if ($user)
 			{

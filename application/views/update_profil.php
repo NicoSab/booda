@@ -47,7 +47,7 @@
 							<label for="hobbies">Hobbies</label>
 						</div>
 						<div class="form__field">
-							<textarea class="textarea" name="hobbies" rows="4" cols="50"></textarea>
+							<textarea class="textarea" name="hobbies" rows="4" cols="50"><?php if (isset($Hobbies)) echo $Hobbies; ?></textarea>
 						</div>
 					</div>
 					<div class="form__row">
@@ -55,7 +55,7 @@
 							<label for="job">Travail</label>
 						</div>
 						<div class="form__field">
-							<input type="text" class="input-text"  name="job" value=""/>
+							<input type="text" class="input-text"  name="job" value="<?php if (isset($Job)) echo $Job; ?>"/>
 						</div>	
 					</div>
 					<div class="form__row">
@@ -63,7 +63,7 @@
 							<label for="description">Description</label>
 						</div>
 						<div class="form__field">
-							<textarea class="textarea" name="description" rows="4" cols="50"></textarea>
+							<textarea class="textarea" name="description" rows="4" cols="50"><?php if (isset($Description)) echo $Description; ?></textarea>
 						</div>
 					</div>
 					<div class="form__row">
@@ -71,12 +71,12 @@
 							<label for="interest">Intéressé par</label>
 						</div>
 						<div class="form__field" style="padding: 12px 10px;">
-							<input type="radio" id="rad1" name="interest" value="Male" />
+							<input type="radio" id="rad1" name="interest" value="Hommes" <?php if (isset($Interest) && $Interest == 'Hommes') echo 'checked=checked'; ?>/>
 							<label for="rad1">Hommes</label>
-							<input type="radio" id="rad2" name="interest" value="Female" />
+							<input type="radio" id="rad2" name="interest" value="Femmes" <?php if (isset($Interest) && $Interest == 'Femmes') echo 'checked=checked'; ?>/>
 							<label for="rad2">Femmes</label>
-							<input type="radio" id="rad3" name="interest" value="Both" />
-							<label for="rad2">Les deux</label>
+							<input type="radio" id="rad3" name="interest" value="Les 2" <?php if (isset($Interest) && $Interest == 'Les 2') echo 'checked=checked'; ?>/>
+							<label for="rad3">Les deux</label>
 						</div>
 					</div>
 						
@@ -85,10 +85,10 @@
 							<label for="situation">Situation</label>
 						</div>
 						<div class="form__field" style="padding: 12px 10px;">
-							<input type="radio" id="rad1" name="situation" value="In couple" />
-							<label for="rad1">En couple</label>
-							<input type="radio" id="rad2" name="situation" value="Single" />
-							<label for="rad2">Célibataire</label>
+							<input type="radio" id="rad4" name="situation" value="En couple" <?php if (isset($MaritalSituation) && $MaritalSituation == 'En couple') echo 'checked=checked'; ?> />
+							<label for="rad4">En couple</label>
+							<input type="radio" id="rad5" name="situation" value="Célibataire" <?php if (isset($MaritalSituation) && $MaritalSituation == 'Célibataire') echo 'checked=checked'; ?> />
+							<label for="rad5">Célibataire</label>
 						</div>
 					</div>
 
@@ -97,12 +97,12 @@
 							<label for="sexuality">Sexualité</label>
 						</div>
 						<div class="form__field" style="padding: 12px 10px;">
-							<input type="radio" id="rad1" name="sexuality" value="Heterosexuel" />
-							<label for="rad1">Hétérosexuel</label>
-							<input type="radio" id="rad2" name="sexuality" value="Homosexuel" />
-							<label for="rad2">Homosexuel</label>
-							<input type="radio" id="rad3" name="sexuality" value="Bisexuel" />
-							<label for="rad2">Bisexuel</label>
+							<input type="radio" id="rad6" name="sexuality" value="Hétérosexuel" <?php if (isset($Sexuality) && $Sexuality == 'Hétérosexuel') echo 'checked=checked'; ?> />
+							<label for="rad6">Hétérosexuel</label>
+							<input type="radio" id="rad7" name="sexuality" value="Homosexuel" <?php if (isset($Sexuality) && $Sexuality == 'Homosexuel') echo 'checked=checked'; ?>/>
+							<label for="rad7">Homosexuel</label>
+							<input type="radio" id="rad8" name="sexuality" value="Bisexuel" <?php if (isset($Sexuality) && $Sexuality == 'Bisexuel') echo 'checked=checked'; ?>/>
+							<label for="rad8">Bisexuel</label>
 						</div>
 					</div>
 

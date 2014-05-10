@@ -27,7 +27,7 @@ class Profil extends CI_Controller
 
 			if (empty($profil) && $userId == $sessionId)
 			{
-				redirect('/profil/update_profil', 'refresh');
+				redirect('/profil/update', 'refresh');
 			}
 			else
 			{
@@ -38,7 +38,7 @@ class Profil extends CI_Controller
 			redirect('/welcome/index', 'refresh');
 	}
 
-	public function update_profil()
+	public function update()
 	{
 		$this->form_validation->set_rules('interest', '"Interesse par"', 'trim|required|max_length[52]|encode_php_tags|xss_clean');
 		$this->form_validation->set_rules('situation', '"Situation"', 'trim|required|max_length[52]|encode_php_tags|xss_clean');
@@ -63,11 +63,14 @@ class Profil extends CI_Controller
 				$this->P_model->update_profil($description, $hobbies, $interest, $situation, $sexuality, $job, $userId);
 			}
 
-			redirect('/profil/see_profil');
+			redirect('/profil/see_profile/'.$userId);
 		}
 		else
 		{
-			$this->load->view('update_profil');
+			$userId = $this->session->userdata('userId');
+			$profil = $this->P_model->get_profil($userId);
+
+			$this->load->view('update_profil', $profil);
 		}
 	}
 
