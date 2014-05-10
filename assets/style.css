@@ -144,6 +144,7 @@ a.btn--orange:hover, a.btn--blue:hover, a.btn--dblue:hover, a.btn--green:hover {
 h1 {
 	margin: 0 0 .25em;
 	font: 2em/1 Helvetica,Arial,sans-serif;
+	padding-bottom: 30px;
 }
 
 .homepage-title {
@@ -265,12 +266,12 @@ input.input-text, input.input-email, input.input-password, input.input-search, .
 	font: 1em/1.5 Arial,sans-serif;
 }
 .signup-page .form__label:before {
-content: '';
-display: inline-block;
-width: 43px;
-height: 43px;
-margin: 0 -15px;
-vertical-align: middle;
+	content: '';
+	display: inline-block;
+	width: 43px;
+	height: 43px;
+	margin: 0 -15px;
+	vertical-align: middle;
 }
 .sign-form__forgot {
 	padding-top: 7px;
@@ -330,4 +331,110 @@ a:hover, .js span.change:hover, a.hovered, .editing a.edit, .btn-lnk:hover {
 .alert-success
 {
 	color:#5A9E3F;
+}
+.menu
+{
+	width: 555px;
+}
+.menu a
+{
+	text-decoration: none;
+	height: 100%;
+	display: block;
+	padding: 14px;
+	margin-top: -5px;
+	color: #555;
+	float: left;
+}
+.menu a:hover
+{
+	text-decoration: none;
+	color:black;
+}
+.menu a:first-child
+{
+	border-right: 1px solid silver;
+}
+.search-wrap {
+	max-width: 850px;
+	margin-left: auto;
+}
+.search {
+	text-align: justify;
+	font-size: 2px;
+	line-height: 0;
+}
+.search:after {
+	display: inline-block;
+	width: 100%;
+	height: 0;
+	content: '';
+}
+.user-card {
+	margin: 0px 30px 20px;
+	text-align: left;
+	float: left;
+	display: inline-block;
+	width: 180px;
+	vertical-align: top;
+	font-size: 12px;
+	line-height: 1.5;
+}
+}
+.user-photo {
+	position: relative;
+}
+.user-card__photo .user-photo {
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	width: 180px;
+	height: 150px;
+	border-radius: 6px 6px 0 0;
+	background: #fff;
+}
+.user-card__photo .user-photo:before {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	content: '';
+	border: 1px solid rgba(0,0,0,.15);
+	border-radius: 6px 6px 0 0;
+}
+img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+.user-photo .photo {
+	display: block;
+}
+.user-card__photo .user-photo .photo {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.user-card__section {
+	background: #fff;
+}
+.user-card__section {
+	padding: 0 10px;
+	border: solid #d2d4d8;
+	border-width: 0 1px 1px;
+	border-radius: 0 0 6px 6px;
+}
+.user-card__section .user-name {
+	display: inline-block;
+	overflow: hidden;
+	max-width: 144px;
+	margin: 8px 0;
+	color: #3f4752;
+	vertical-align: middle;
+	white-space: nowrap;
+	text-decoration: none;
+	text-overflow: ellipsis;
+	font: 1.75em/1 Helvetica,Arial,sans-serif;
 }
