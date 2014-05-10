@@ -12,7 +12,7 @@ class ProfileModel extends CI_Model
 									'MaritalSituation' => $situation,
 									'Sexuality' => $sexuality,
 									'Job' => $job,
-									'idUser' => $userId);)
+									'idUser' => $userId))
 						->insert($this->table);
 	}
 
@@ -22,11 +22,18 @@ class ProfileModel extends CI_Model
 						->from($this->table)
 						->where('idUser', $userId)
 						->get()
-						->row();
+						->row_array();
 	}
 
 	public function update_profil($description, $hobbies, $interest, $situation, $sexuality, $job, $userId)
 	{
-
+		return $this->db->set(array('Description' => $description,
+									'Hobbies' => $hobbies,
+									'Interest' => $interest,
+									'MaritalSituation' => $situation,
+									'Sexuality' => $sexuality,
+									'Job' => $job))
+						->where('idUser', $userId)
+						->update($this->table);
 	}
 }

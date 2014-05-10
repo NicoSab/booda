@@ -8,7 +8,8 @@
 	<form method="post" action="">
 		<label for="hobbies">Hobbies :</label>
 		</br>
-		<textarea name="hobbies" rows="4" cols="50"></textarea>
+		<textarea name="hobbies" rows="4" cols="50">
+		</textarea>
 		</br>
 
 		<label for="interest">Interesse par :</label>
@@ -42,7 +43,8 @@
 
 		<label for="description">Description :</label>
 		</br>
-		<textarea name="descrition" rows="4" cols="50"></textarea>
+		<textarea name="description" rows="4" cols="50">
+		</textarea>
 		</br>
 
 		<input type="submit" value="Envoyer" />

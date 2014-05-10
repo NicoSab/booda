@@ -2,7 +2,6 @@
 
 class Profil extends CI_Controller
 {
-	private $first = true;
 
 	public function __construct()
 	{
@@ -17,8 +16,8 @@ class Profil extends CI_Controller
 
 	public function update_profil()
 	{
-		$this->form_validation->set_rules('interest', '"Interesse par"', 'trim|required|max_length[52]|alpha_dash|encode_php_tags|xss_clean');
-		$this->form_validation->set_rules('situation', '"Situation"', 'trim|required|max_length[52]|alpha_dash|encode_php_tags|xss_clean');
+		$this->form_validation->set_rules('interest', '"Interesse par"', 'trim|required|max_length[52]|encode_php_tags|xss_clean');
+		$this->form_validation->set_rules('situation', '"Situation"', 'trim|required|max_length[52]|encode_php_tags|xss_clean');
 		$this->form_validation->set_rules('sexuality', '"Sexualite"', 'trim|required|max_length[52]|encode_php_tags|xss_clean');
 
 		if ($this->form_validation->run())
@@ -31,14 +30,16 @@ class Profil extends CI_Controller
 			$description = $this->input->post('description');
 			$userId = $this->session->userdata('userId');
 
-			if ($first)
-			{
-				$this->P_model->add_profil($description, $hobbies, $interest, $situation, $sexuality, $job, $userId);
-				$first = false;
-			}
-			else
-				$this->P_model->update_profil($description, $hobbies, $interest, $situation, $sexuality, $job, $userId)
+			$profil = $this->P_model->get_profil($userId);
 
+			if (empty($profil)) {
+				$this->P_model->add_profil($description, $hobbies, $interest, $situation, $sexuality, $job, $userId);
+			}
+			else {
+				$this->P_model->update_profil($description, $hobbies, $interest, $situation, $sexuality, $job, $userId);
+			}
+
+			redirect('/profil/see_profil');
 		}
 		else
 		{
@@ -48,9 +49,16 @@ class Profil extends CI_Controller
 
 	public function see_profil()
 	{
-		if ($first)
+		$userId = $this->session->userdata('userId');
+		$profil = $this->P_model->get_profil($userId);
+
+		if (empty($profil))
+		{
 			redirect('/profil/update_profil', 'refresh');
+		}
 		else
-			$this->load->view('see_profil');
+		{
+			$this->load->view('see_profil', $profil);
+		}
 	}
 }
