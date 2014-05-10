@@ -76,7 +76,7 @@
 							<input type="radio" id="rad2" name="interest" value="Female" />
 							<label for="rad2">Femmes</label>
 							<input type="radio" id="rad3" name="interest" value="Both" />
-							<label for="rad2">Les deux</label>
+							<label for="rad3">Les deux</label>
 						</div>
 					</div>
 						
@@ -85,10 +85,10 @@
 							<label for="situation">Situation</label>
 						</div>
 						<div class="form__field" style="padding: 12px 10px;">
-							<input type="radio" id="rad1" name="situation" value="In couple" />
-							<label for="rad1">En couple</label>
-							<input type="radio" id="rad2" name="situation" value="Single" />
-							<label for="rad2">Célibataire</label>
+							<input type="radio" id="rad4" name="situation" value="In couple" />
+							<label for="rad4">En couple</label>
+							<input type="radio" id="rad5" name="situation" value="Single" />
+							<label for="rad5">Célibataire</label>
 						</div>
 					</div>
 
@@ -97,12 +97,12 @@
 							<label for="sexuality">Sexualité</label>
 						</div>
 						<div class="form__field" style="padding: 12px 10px;">
-							<input type="radio" id="rad1" name="sexuality" value="Heterosexuel" />
-							<label for="rad1">Hétérosexuel</label>
-							<input type="radio" id="rad2" name="sexuality" value="Homosexuel" />
-							<label for="rad2">Homosexuel</label>
-							<input type="radio" id="rad3" name="sexuality" value="Bisexuel" />
-							<label for="rad2">Bisexuel</label>
+							<input type="radio" id="rad6" name="sexuality" value="Heterosexuel" />
+							<label for="rad6">Hétérosexuel</label>
+							<input type="radio" id="rad7" name="sexuality" value="Homosexuel" />
+							<label for="rad7">Homosexuel</label>
+							<input type="radio" id="rad8" name="sexuality" value="Bisexuel" />
+							<label for="rad8">Bisexuel</label>
 						</div>
 					</div>
 

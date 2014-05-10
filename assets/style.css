@@ -441,3 +441,25 @@ img {
 	text-overflow: ellipsis;
 	font: 1.75em/1 Helvetica,Arial,sans-serif;
 }
+
+.profile-page
+{
+	min-height: 520px;
+	width:440px;
+	margin:auto;
+}
+
+
+.profile-page label
+{
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.profile-page span 
+{
+	float:right;
+	width: 100%;
+	word-wrap: break-word;
+	padding-bottom: 10px;
+}
