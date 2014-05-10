@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Dim 04 Mai 2014 à 20:31
+-- Généré le: Sam 10 Mai 2014 à 04:51
 -- Version du serveur: 5.5.33
 -- Version de PHP: 5.5.3
 
@@ -19,30 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données: `booda`
 --
-CREATE DATABASE IF NOT EXISTS `booda` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `booda`;
 
--- --------------------------------------------------------
-
---
--- Structure de la table `Conversations`
---
-
-CREATE TABLE `Conversations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idUser1` int(11) NOT NULL,
-  `idUser2` int(11) NOT NULL,
-  `lastUpdatedDate` date NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `idUser1` (`idUser1`),
-  UNIQUE KEY `idUser2` (`idUser2`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Vider la table avant d'insérer `Conversations`
---
-
-TRUNCATE TABLE `Conversations`;
 -- --------------------------------------------------------
 
 --
@@ -56,111 +33,33 @@ CREATE TABLE `Messages` (
   `createdDate` date NOT NULL,
   `message` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `idUser` (`idUser`),
-  UNIQUE KEY `idConversation` (`idConversation`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `idUser` (`idUser`),
+  KEY `idConversation` (`idConversation`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Vider la table avant d'insérer `Messages`
 --
 
 TRUNCATE TABLE `Messages`;
--- --------------------------------------------------------
-
 --
--- Structure de la table `Photos`
+-- Contenu de la table `Messages`
 --
 
-CREATE TABLE `Photos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `idProfil` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `idProfil` (`idProfil`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+INSERT INTO `Messages` (`id`, `idUser`, `idConversation`, `createdDate`, `message`) VALUES
+(1, 1, 1, '2014-05-10', '0'),
+(3, 1, 1, '2014-05-10', 'message 1');
 
---
--- Vider la table avant d'insérer `Photos`
---
-
-TRUNCATE TABLE `Photos`;
--- --------------------------------------------------------
-
---
--- Structure de la table `Profils`
---
-
-CREATE TABLE `Profils` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Description` varchar(150) NOT NULL,
-  `Hobbies` varchar(100) NOT NULL,
-  `Interest` enum('"Women"','"Men"','"Both"') NOT NULL,
-  `MaritalSituation` enum('"In couple"','"Single"') NOT NULL,
-  `Sexuality` varchar(100) NOT NULL,
-  `Job` varchar(100) NOT NULL,
-  `idUser` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `idUser` (`idUser`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Vider la table avant d'insérer `Profils`
---
-
-TRUNCATE TABLE `Profils`;
--- --------------------------------------------------------
-
---
--- Structure de la table `Users`
---
-
-CREATE TABLE `Users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Pass` varchar(50) NOT NULL,
-  `Firstname` varchar(50) NOT NULL,
-  `Lastname` varchar(50) NOT NULL,
-  `Sexe` varchar(25) NOT NULL,
-  `BirthDate` date NOT NULL,
-  `City` varchar(50) NOT NULL,
-  `Mail` varchar(100) NOT NULL,
-  `Pseudo` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Vider la table avant d'insérer `Users`
---
-
-TRUNCATE TABLE `Users`;
 --
 -- Contraintes pour les tables exportées
 --
 
 --
--- Contraintes pour la table `Conversations`
---
-ALTER TABLE `Conversations`
-  ADD CONSTRAINT `conversations_ibfk_2` FOREIGN KEY (`idUser2`) REFERENCES `Users` (`id`),
-  ADD CONSTRAINT `conversations_ibfk_1` FOREIGN KEY (`idUser1`) REFERENCES `Users` (`id`);
-
---
 -- Contraintes pour la table `Messages`
 --
 ALTER TABLE `Messages`
-  ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`idConversation`) REFERENCES `Conversations` (`id`),
-  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `Users` (`id`);
-
---
--- Contraintes pour la table `Photos`
---
-ALTER TABLE `Photos`
-  ADD CONSTRAINT `photos_ibfk_1` FOREIGN KEY (`idProfil`) REFERENCES `Profils` (`id`);
-
---
--- Contraintes pour la table `Profils`
---
-ALTER TABLE `Profils`
-  ADD CONSTRAINT `profils_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `Users` (`id`);
+  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `Users` (`id`),
+  ADD CONSTRAINT `messages_ibfk_2` FOREIGN KEY (`idConversation`) REFERENCES `Conversations` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
