@@ -34,4 +34,20 @@ class UserModel extends CI_Model
 						->get()
 						->row();
 	}
+	public function record_count() {
+        return $this->db->count_all($this->table);
+    }
+ 
+    public function fetch_users($limit, $start) {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get($this->table);
+ 
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+   }
 }
