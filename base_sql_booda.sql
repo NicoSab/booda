@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Sam 10 Mai 2014 à 19:12
+-- Généré le: Sam 10 Mai 2014 à 21:07
 -- Version du serveur: 5.5.33
 -- Version de PHP: 5.5.3
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données: `booda`
 --
+CREATE DATABASE IF NOT EXISTS `booda` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `booda`;
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,7 @@ INSERT INTO `Profils` (`id`, `Description`, `Hobbies`, `Interest`, `MaritalSitua
 
 CREATE TABLE `Users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Pass` varchar(50) NOT NULL,
+  `Pass` varchar(128) NOT NULL,
   `Firstname` varchar(50) NOT NULL,
   `Lastname` varchar(50) NOT NULL,
   `Sexe` varchar(25) NOT NULL,
@@ -152,7 +154,8 @@ CREATE TABLE `Users` (
   `City` varchar(50) NOT NULL,
   `Mail` varchar(100) NOT NULL,
   `Pseudo` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `Mail` (`Mail`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
