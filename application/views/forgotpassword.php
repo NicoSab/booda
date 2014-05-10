@@ -25,6 +25,15 @@
 			<div class="sign-title">
 				<h1>Mot de passe oublié ?</h1>
 			</div>
+			<?php if( isset($info)): ?>
+			<div class="alert alert-success">
+				<?php echo($info) ?>
+			</div>
+			<?php elseif( isset($error)): ?>
+			<div class="alert alert-error">
+				<?php echo($error) ?>
+			</div>
+			<?php endif; ?>
 			<div>
 				<form action="" method="post" class="form">
 					<div class="form__row">

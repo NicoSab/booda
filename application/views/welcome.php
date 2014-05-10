@@ -38,7 +38,10 @@
 								<form action="<?php echo site_url('auth/connexion'); ?>" method="post" class="no_autoloader form js-signin" novalidate>
 									<h2>
 										Identifie-toi sur Booda</h2>
-										<?php if( isset($info)): ?>
+										<?php 
+										if (isset($_GET["info"]))
+											$info = $_GET["info"];
+										if( isset($info)): ?>
 										<div class="alert alert-success">
 											<?php echo($info) ?>
 										</div>

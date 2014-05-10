@@ -40,7 +40,7 @@ class Auth extends CI_Controller
 			try
 			{
 				$this->A_model->add_user($pseudo, $mdp, $firstname, $name, $sex, $BD, $city, $mail);
-				$info = "Inscription réussie";
+				$info = "Inscription reussie";
 				redirect('welcome/index?info='.$info, 'refresh');
 			}
 			catch (Exception $e)
@@ -96,7 +96,7 @@ class Auth extends CI_Controller
 
 		if ($email)
 		{
-			$user = $this->A_model->get_user_by_mail($email);
+			$user = $this->A_model->get_user_by_email($email);
 			if ($user)
 			{
 				$this->sendpassword($user);
@@ -112,4 +112,21 @@ class Auth extends CI_Controller
 		}
 		$this->load->view('forgotpassword', $data);
 	}
+	private function sendpassword($user)
+	{
+		date_default_timezone_set('GMT');
+
+		$this->load->helper('string');
+		$config['protocol'] = 'smtp';
+		$config['smtp_host']='ssl://smtp.mailgun.org';
+		$config['smtp_user']='postmaster@sandboxfa771818c4804a6681421e83383926a5.mailgun.org';
+		$config['smtp_pass']='04x9dru8dhd8';
+		$config['smtp_port']='465';
+		$this->load->library('email', $config);
+		$this->email->from('master@booda.fr', 'Booda Master');
+		$this->email->to($user->Mail); 	
+		$this->email->subject('Votre mot de passe');
+		$this->email->message('Voici votre mot de passe '. $user->Pass);	
+		$this->email->send();
+	} 
 }
