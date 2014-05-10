@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Sam 10 Mai 2014 à 21:07
+-- Généré le: Dim 11 Mai 2014 à 00:03
 -- Version du serveur: 5.5.33
 -- Version de PHP: 5.5.3
 
@@ -34,9 +34,9 @@ CREATE TABLE `Conversations` (
   `idUser2` int(11) NOT NULL,
   `lastUpdatedDate` date NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `idUser1` (`idUser1`),
-  UNIQUE KEY `idUser2` (`idUser2`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  KEY `idUser1` (`idUser1`),
+  KEY `idUser2` (`idUser2`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Vider la table avant d'insérer `Conversations`
@@ -48,7 +48,8 @@ TRUNCATE TABLE `Conversations`;
 --
 
 INSERT INTO `Conversations` (`id`, `idUser1`, `idUser2`, `lastUpdatedDate`) VALUES
-(1, 1, 2, '2014-05-10');
+(1, 1, 2, '2014-05-10'),
+(3, 1, 6, '2014-05-10');
 
 -- --------------------------------------------------------
 
@@ -136,7 +137,7 @@ TRUNCATE TABLE `Profils`;
 --
 
 INSERT INTO `Profils` (`id`, `Description`, `Hobbies`, `Interest`, `MaritalSituation`, `Sexuality`, `Job`, `idUser`) VALUES
-(1, '0', 'teste', 'Both', 'In couple', 'Heterosexuel', 'Etudiant', 1);
+(1, 'test', 'test', 'Male', 'In couple', 'Heterosexuel', 'test', 1);
 
 -- --------------------------------------------------------
 

@@ -26,6 +26,11 @@ class UserModel extends CI_Model
 						->get()
 						->row();
 	}
+	public function get_all_user()
+	{
+		return $this->db->get($this->table)
+						->result_array();
+	}
 	public function get_user_by_email($email)
 	{
 		return $this->db->select()

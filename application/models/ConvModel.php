@@ -4,10 +4,11 @@ class ConvModel extends CI_Model
 {
 	private $table = 'Conversations';
 
-	public function create_conversation($userId_1, $userId_2, $lastDate)
+	public function create_conversation($userId_1, $userId_2)
 	{
 		return $this->db->set(array('idUser1' => $userId_1,
 									'idUser2' => $userId_2))
+						->set('lastUpdatedDate', 'NOW()', false)
 						->insert($this->table);
 	}
 
@@ -19,5 +20,16 @@ class ConvModel extends CI_Model
 						->where('idUser2', $userId_2)
 						->get()
 						->row_array();
+	}
+
+	public function get_ten_last_conversation($userId)
+	{
+		return $this->db->select()
+						->from($this->table)
+						->where('idUser1', $userId)
+						->or_where('idUser2', $userId)
+						->limit(10)
+						->get()
+						->result_array();
 	}
 }
