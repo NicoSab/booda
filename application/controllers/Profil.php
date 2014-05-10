@@ -67,7 +67,10 @@ class Profil extends CI_Controller
 		}
 		else
 		{
-			$this->load->view('update_profil');
+			$userId = $this->session->userdata('userId');
+			$profil = $this->P_model->get_profil($userId);
+
+			$this->load->view('update_profil', $profil);
 		}
 	}
 

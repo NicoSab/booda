@@ -56,7 +56,7 @@
 									</div>
 								</div>
 								<div class="user-card__section">
-									<a href="#" class="user-name app"><?php echo $data->Pseudo; ?></a>
+									<a href="<?php echo site_url('profil/'.$data->id); ?>" class="user-name app"><?php echo $data->Pseudo; ?></a>
 								</div>
 							</div>
 							<?php }
