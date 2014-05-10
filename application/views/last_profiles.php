@@ -14,9 +14,13 @@
 		
 		<div class="submit-buttons fl_r" id="join">
 			<span class="btn-or">
+				<a href="<?php echo site_url('profil/'.$this->session->userdata('userId')); ?>" class="btn btn--orange">
+					Mon profil
+				</a>
 				<a href="<?php echo site_url('auth/logout'); ?>" class="btn btn--orange">
 					Déconnexion
 				</a>
+			</span>
 			</div>
 		</div>
 		<div class="menu fl_r">

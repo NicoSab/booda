@@ -12,6 +12,30 @@ class Profil extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->helpers(array('url', 'assets'));
 		$this->load->model('ProfileModel', 'P_model');
+
+		if (!$this->session->userdata('userId'))
+		{
+			redirect('welcome/index', 'refresh');
+		}
+	}
+	public function see_profile($userId = null)
+	{
+		if ($userId)
+		{
+			$sessionId = $this->session->userdata('userId');
+			$profil = $this->P_model->get_profil($userId);
+
+			if (empty($profil) && $userId == $sessionId)
+			{
+				redirect('/profil/update_profil', 'refresh');
+			}
+			else
+			{
+				$this->load->view('see_profil', $profil);
+			}
+		}
+		else
+			redirect('/welcome/index', 'refresh');
 	}
 
 	public function update_profil()
@@ -47,18 +71,4 @@ class Profil extends CI_Controller
 		}
 	}
 
-	public function see_profil()
-	{
-		$userId = $this->session->userdata('userId');
-		$profil = $this->P_model->get_profil($userId);
-
-		if (empty($profil))
-		{
-			redirect('/profil/update_profil', 'refresh');
-		}
-		else
-		{
-			$this->load->view('see_profil', $profil);
-		}
-	}
 }

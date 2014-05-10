@@ -273,6 +273,9 @@ input.input-text, input.input-email, input.input-password, input.input-search, .
 	margin: 0 -15px;
 	vertical-align: middle;
 }
+.signup-page .form-not-before .form__label:before {
+	content: none;
+}
 .sign-form__forgot {
 	padding-top: 7px;
 	padding-bottom: 8px;

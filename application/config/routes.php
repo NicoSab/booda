@@ -40,7 +40,6 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
-
-
+$route['profil/(:num)'] = 'profil/see_profile/$1';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
