@@ -47,8 +47,7 @@
 							<label for="hobbies">Hobbies</label>
 						</div>
 						<div class="form__field">
-							<textarea class="textarea" name="hobbies" rows="4" cols="50">
-							</textarea>
+							<textarea class="textarea" name="hobbies" rows="4" cols="50"></textarea>
 						</div>
 					</div>
 					<div class="form__row">
@@ -64,8 +63,7 @@
 							<label for="description">Description</label>
 						</div>
 						<div class="form__field">
-							<textarea class="textarea" name="description" rows="4" cols="50">
-							</textarea>
+							<textarea class="textarea" name="description" rows="4" cols="50"></textarea>
 						</div>
 					</div>
 					<div class="form__row">
