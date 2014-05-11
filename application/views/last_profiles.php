@@ -28,7 +28,7 @@
 				<img src="<?php echo asset_url('img/persons.png'); ?>"/>
 				&nbsp;&nbsp;Personnes
 			</a>
-			<a href=<?php echo site_url('dating'); ?> class="dating">
+			<a href=<?php echo site_url('chat'); ?> class="dating">
 				<img src="<?php echo asset_url('img/messages.png'); ?>"/>
 				&nbsp;&nbsp;Tchat
 			</a>
