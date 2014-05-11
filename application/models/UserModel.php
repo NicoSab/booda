@@ -45,7 +45,7 @@ class UserModel extends CI_Model
  
     public function fetch_users($limit, $start) {
         $this->db->limit($limit, $start);
-        $query = $this->db->get($this->table);
+        $query = $this->db->order_by("Users.id", "desc")->get($this->table);
  
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
@@ -57,7 +57,8 @@ class UserModel extends CI_Model
    }
    public function search($limit, $start, $hobbies, $job, $interest, $situation, $sexuality, $sex, $agemin, $agemax)
    {
-   	    $this->db->limit($limit, $start);
+   		if ($limit && $start)
+	   	    $this->db->limit($limit, $start);
    		$query = $this->db->select()
 						->from($this->table)
 						->join("Profils", "Users.id = Profils.idUser");
@@ -83,7 +84,7 @@ class UserModel extends CI_Model
 		{
 			$query = $query->where('Users.Sexe', $sex);
 		}
-		$query = $query->get();
+		$query = $query->order_by("Users.id", "desc")->get();
  
         if ($query->num_rows() > 0) {
         	$data = null;
@@ -119,30 +120,6 @@ class UserModel extends CI_Model
    }
     public function count_search($hobbies, $job, $interest, $situation, $sexuality, $sex, $agemin, $agemax)
    {
-   		$query = $this->db->select()
-						->from($this->table)
-						->join("Profils", "Users.id = Profils.idUser");
-
-		if ($hobbies)
-		{
-			$query = $query;
-		}
-		if ($job)
-		{
-			$query = $query->where('Profils.Job', $job);
-		}
-		if ($interest)
-		{
-			$query = $query->where('Profils.Interest', $interest);
-		}
-		if ($situation)
-		{
-			$query = $query->where('Profils.MaritalSituation', $situation);
-		}
-		if ($sexuality)
-		{
-			$query = $query->where('Profils.Sexuality', $sexuality);
-		}
-		return $query->count_all_results();
+   		return count($this->search(null, null, $hobbies, $job, $interest, $situation, $sexuality, $sex, $agemin, $agemax));
    }
 }
