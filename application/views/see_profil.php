@@ -76,8 +76,12 @@
 			<label>Description</label>
 			<span><?php if (isset($Description)) echo $Description; ?></span>
 			</br>
-				<a href="<?php echo site_url('profil/update'); ?>" class="btn btn--orange btn--lg">Le mettre à jour</a>
-
+			<?php if ($this->session->userdata('userId') == $idUser)
+			{ ?>
+				<a href="<?php echo site_url('profil/update'); ?>" class="btn btn--orange btn--lg">Mettre à jour</a>
+				</br>
+				<a href="<?php echo site_url('upload'); ?>" class="btn btn--orange btn--lg">Ajouter une photo</a>
+			<?php } ?>
 		</div>
 		</div>
 	</div>

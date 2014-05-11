@@ -28,7 +28,7 @@
 				<img src="<?php echo asset_url('img/persons.png'); ?>"/>
 				&nbsp;&nbsp;Personnes
 			</a>
-			<a href=<?php echo site_url('dating'); ?> class="dating">
+			<a href=<?php echo site_url('chat'); ?> class="dating">
 				<img src="<?php echo asset_url('img/messages.png'); ?>"/>
 				&nbsp;&nbsp;Tchat
 			</a>
@@ -62,6 +62,10 @@
 								</div>
 								<div class="user-card__section">
 									<a href="<?php echo site_url('profil/'.$data->idUser); ?>" class="user-name app"><?php echo $data->Pseudo; ?></a>
+									<span class="age"><?php $oDateNow = new DateTime();
+															$oDateBirth = new DateTime($data->BirthDate);
+															$oDateIntervall = $oDateNow->diff($oDateBirth);
+															echo $oDateNow->diff($oDateBirth)->format('%y ans'); ?></span>
 								</div>
 							</div>
 							<?php }

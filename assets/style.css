@@ -252,6 +252,8 @@ input.input-text, input.input-email, input.input-password, input.input-search, .
 .form__row {
 	position: relative;
 	padding: 0;
+	float: left;
+	width: 100%;
 }
 .form__row > label, .form__row > .label, .form__label {
 	display: inline-block;
@@ -259,12 +261,18 @@ input.input-text, input.input-email, input.input-password, input.input-search, .
 	box-sizing: border-box;
 	padding-right: 11px;
 	text-align: right;
+	padding-top: 8px;
 }
 .form label, .form .label {
 	display: inline-block;
 	vertical-align: middle;
 	font: 1em/1.5 Arial,sans-serif;
+}
+.signup-page .form label, .signup-page .form .label {
 	width: 124px;
+}
+.signup-page .form__row > label, .signup-page .form__row > .label, .signup-page .form__label {
+	padding-right: 11px;
 }
 .signup-page .form__label:before {
 	content: '';
@@ -345,7 +353,7 @@ a:hover, .js span.change:hover, a.hovered, .editing a.edit, .btn-lnk:hover {
 	text-decoration: none;
 	height: 100%;
 	display: block;
-	padding: 14px;
+	padding: 14px 35px;
 	margin-top: -5px;
 	color: #555;
 	float: left;
@@ -463,4 +471,8 @@ img {
 	width: 100%;
 	word-wrap: break-word;
 	padding-bottom: 10px;
+}
+.age {
+	float: right;
+	line-height: 35px;
 }

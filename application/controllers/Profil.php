@@ -31,6 +31,7 @@ class Profil extends CI_Controller
 			}
 			else
 			{
+
 				$this->load->view('see_profil', $profil);
 			}
 		}
@@ -73,5 +74,4 @@ class Profil extends CI_Controller
 			$this->load->view('update_profil', $profil);
 		}
 	}
-
 }

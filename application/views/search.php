@@ -29,7 +29,7 @@
 				<img src="<?php echo asset_url('img/persons.png'); ?>"/>
 				&nbsp;&nbsp;Personnes
 			</a>
-			<a href=<?php echo site_url('dating'); ?> class="dating">
+			<a href=<?php echo site_url('chat'); ?> class="dating">
 				<img src="<?php echo asset_url('img/messages.png'); ?>"/>
 				&nbsp;&nbsp;Tchat
 			</a>
@@ -39,19 +39,42 @@
 		<div class="sign-page signup-page">
 			<div class="sign-title" style="position:relative">
 				<h1>Recherchez d'autres personnes</h1>
-				<span style="position: absolute;top: 0;left: 50%;font-style: italic;">
-					Laissez vides les champs qui ne vous intéressent pas</span>
 			</div>
 			<div>
 				<form method="post" class="form form-not-before" action="<?php echo site_url('dating/results'); ?>">
 					<div class="form__row">
 						<div class="form__label">
+							<label for="sex">Sexe</label>
+						</div>
+						<div class="form__field" style="padding: 12px 10px;">
+								<input type="radio" id="rad9" name="sex" value="Homme"
+								<?php if ($this->session->userdata('sex') && $this->session->userdata('sex') == 'Homme') echo 'checked=checked'; ?>  />
+								<label for="rad9">Homme</label>
+								<input type="radio" id="rad10" name="sex" value="Femme"
+								<?php if ($this->session->userdata('sex') && $this->session->userdata('sex') == 'Femme') echo 'checked=checked'; ?>  />
+								<label for="rad10">Femme</label>
+						</div>
+					</div>
+					<div class="form__row">
+						<div class="form__label">
+							<label for="agemin">Age minimum</label>
+						</div>
+						<div class="form__field">
+							<input type="number" class="input-text" style="width: 13%;" value="<?php if ($this->session->userdata('agemin')) echo $this->session->userdata("agemin"); ?>" name="agemin"/>
+						</div>	
+						<div class="form__label">
+							<label for="agemax">Age maximum</label>
+						</div>
+						<div class="form__field">
+							<input type="number" class="input-text" style="width: 13%;" value="<?php if ($this->session->userdata('agemax')) echo $this->session->userdata("agemax"); ?>" name="agemax"/>
+						</div>	
+					</div>	
+					<div class="form__row">
+						<div class="form__label">
 							<label for="hobbies">Hobbies (séparez avec des virgules)</label>
 						</div>
 						<div class="form__field">
-							<textarea class="textarea" name="hobbies" rows="4" cols="50">
-								<?php if ($this->session->userdata("hobbies")) echo $this->session->userdata("hobbies"); ?>
-							</textarea>
+							<textarea class="textarea" name="hobbies" rows="4" cols="50"><?php if ($this->session->userdata("hobbies")) echo $this->session->userdata("hobbies"); ?></textarea>
 						</div>
 					</div>
 					<div class="form__row">
@@ -62,19 +85,7 @@
 							<input type="text" class="input-text" value="<?php if ($this->session->userdata('job')) echo $this->session->userdata("job"); ?>" name="job"/>
 						</div>	
 					</div>
-					<div class="form__row">
-						<div class="form__label">
-							<label for="sex">Sexe</label>
-						</div>
-						<div class="form__field" style="padding: 12px 10px;">
-								<input type="radio" id="rad1" name="sex" value="Homme"
-								<?php if ($this->session->userdata('sex') && $this->session->userdata('sex') == 'Homme') echo 'checked=checked'; ?>  />
-								<label for="rad1">Homme</label>
-								<input type="radio" id="rad2" name="sex" value="Femme"
-								<?php if ($this->session->userdata('sex') && $this->session->userdata('sx') == 'Femme') echo 'checked=checked'; ?>  />
-								<label for="rad2">Femme</label>
-						</div>
-					</div>
+					
 					<div class="form__row">
 						<div class="form__label">
 							<label for="interest">Intéressé par</label>
@@ -124,6 +135,10 @@
 					</div>
 					<input type="hidden" name="newsearch" value="1"/>
 					<input type="submit" class="btn btn--orange btn--lg" value="Rechercher" />
+					<a href="<?php echo site_url('dating/resetSearch'); ?>" class="btn btn--green btn--lg">
+						Réinitialiser
+					</a>
+
 				</form>
 			</div>
 		</div>

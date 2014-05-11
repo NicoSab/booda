@@ -15,7 +15,16 @@ class Chat extends CI_Controller
 		$this->load->model('MessageModel', 'M_model');
 		$this->load->model('UserModel', 'U_model');
 	}
+	public function index()
+	{
+		$conversations = $this->C_model->get_ten_last_conversation($this->session->userdata('userId'));
+		$users = $this->U_model->get_all_user();
+		$data = array();
+		$data['conversations'] = $conversations;
+		$data['users'] = $users;
 
+		$this->load->view('chat', $data);
+	}
 	public function new_conversation($userId2 = null)
 	{
 		if($userId2)
@@ -46,16 +55,5 @@ class Chat extends CI_Controller
 		$data['users'] = $users;
 
 		$this->load->view('conversation', $data);
-	}
-
-	public function all_chat()
-	{
-		$conversations = $this->C_model->get_ten_last_conversation($this->session->userdata('userId'));
-		$users = $this->U_model->get_all_user();
-		$data = array();
-		$data['conversations'] = $conversations;
-		$data['users'] = $users;
-
-		$this->load->view('chat', $data);
 	}
 }
