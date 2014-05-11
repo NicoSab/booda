@@ -93,10 +93,10 @@
 							<label for="sex">Sexe</label>
 						</div>
 						<div class="form__field" style="padding: 12px 10px;">
+								<input type="radio" id="rad1" name="sex" value="Homme" />
 								<label for="rad1">Homme</label>
-								<input type="radio" id="rad1" name="sex" value="Male" />
+								<input type="radio" id="rad2" name="sex" value="Femme" />
 								<label for="rad2">Femme</label>
-								<input type="radio" id="rad2" name="sex" value="Female" />
 						</div>
 						<?php echo form_error('sex'); ?>
 					</div>

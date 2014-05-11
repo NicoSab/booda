@@ -19,8 +19,9 @@ class ProfileModel extends CI_Model
 	public function get_profil($userId)
 	{
 		return $this->db->select()
-						->from($this->table)
-						->where('idUser', $userId)
+						->from("Users")
+						->join("Profils", "Users.id = Profils.idUser", 'left outer')
+						->where('Users.id', $userId)
 						->get()
 						->row_array();
 	}

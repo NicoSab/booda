@@ -264,6 +264,7 @@ input.input-text, input.input-email, input.input-password, input.input-search, .
 	display: inline-block;
 	vertical-align: middle;
 	font: 1em/1.5 Arial,sans-serif;
+	width: 124px;
 }
 .signup-page .form__label:before {
 	content: '';
@@ -311,7 +312,7 @@ a:hover, .js span.change:hover, a.hovered, .editing a.edit, .btn-lnk:hover {
 }
 .sign-page .form {
 	float: left;
-	width: 440px;
+	width: 657px;
 }
 .signup-page {
 	min-height: 520px;
@@ -359,7 +360,7 @@ a:hover, .js span.change:hover, a.hovered, .editing a.edit, .btn-lnk:hover {
 	border-right: 1px solid silver;
 }
 .search-wrap {
-	max-width: 850px;
+	width: 850px;
 	margin-left: auto;
 }
 .search {
