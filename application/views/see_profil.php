@@ -38,8 +38,20 @@
 	<div id="wrap">
 		<div class="profile-page">
 			<div>
-				<h1>Votre profil</h1>
+				<h1>Profil de <?php if (isset($Pseudo)) echo $Pseudo; ?> </h1>
 			</div>
+			</br>
+			<label> Sexe</label>
+			<span><?php if (isset($Sexe)) echo $Sexe; ?></span>
+			</br>
+			<label> Age</label>
+			<span><?php if (isset($BirthDate)) {
+					$oDateNow = new DateTime();
+					$oDateBirth = new DateTime($BirthDate);
+					$oDateIntervall = $oDateNow->diff($oDateBirth);
+					echo $oDateNow->diff($oDateBirth)->format('%y ans');
+				 } ?></span>
+			</br>
 			<label> Hobbies</label>
 			<span>
 			<?php if (isset($Hobbies)) echo $Hobbies; ?></span>

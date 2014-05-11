@@ -50,4 +50,70 @@ class UserModel extends CI_Model
         }
         return false;
    }
+   public function search($limit, $start, $hobbies, $job, $interest, $situation, $sexuality)
+   {
+   	    $this->db->limit($limit, $start);
+   		$query = $this->db->select()
+						->from($this->table)
+						->join("Profils", "Users.id = Profils.idUser");
+
+		if ($hobbies)
+		{
+			$query = $query;
+		}
+		if ($job)
+		{
+			$query = $query->where('Profils.Job', $job);
+		}
+		if ($interest)
+		{
+			$query = $query->where('Profils.Interest', $interest);
+
+		}
+		if ($situation)
+		{
+			$query = $query->where('Profils.MaritalSituation', $situation);
+		}
+		if ($sexuality)
+		{
+			$query = $query->where('Profils.Sexuality', $sexuality);
+		}
+		$query = $query->get();
+ 
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+   }
+    public function count_search($hobbies, $job, $interest, $situation, $sexuality)
+   {
+   		$query = $this->db->select()
+						->from($this->table)
+						->join("Profils", "Users.id = Profils.idUser");
+
+		if ($hobbies)
+		{
+			$query = $query;
+		}
+		if ($job)
+		{
+			$query = $query->where('Profils.Job', $job);
+		}
+		if ($interest)
+		{
+			$query = $query->where('Profils.Interest', $interest);
+		}
+		if ($situation)
+		{
+			$query = $query->where('Profils.MaritalSituation', $situation);
+		}
+		if ($sexuality)
+		{
+			$query = $query->where('Profils.Sexuality', $sexuality);
+		}
+		return $query->count_all_results();
+   }
 }
