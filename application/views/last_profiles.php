@@ -53,6 +53,8 @@
 					<div id="search">
 						<div class="search">
 							<?php
+							if ($results)
+							{
 							foreach($results as $data) { ?>
 							<div class="user-card">
 								<div class="user-card__photo">
@@ -72,6 +74,7 @@
 								</div>
 							</div>
 							<?php }
+							}
 							?>
 						</div>
 					</div>

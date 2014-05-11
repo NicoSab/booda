@@ -12,7 +12,7 @@ class Profil extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->helpers(array('url', 'assets'));
 		$this->load->model('ProfileModel', 'P_model');
-	    $this->load->model('PhotoModel', 'Photo_model');
+		$this->load->model('PhotoModel', 'Photo_model');
 
 		if (!$this->session->userdata('userId'))
 		{
@@ -26,9 +26,9 @@ class Profil extends CI_Controller
 			$sessionId = $this->session->userdata('userId');
 			$profil = $this->P_model->get_profil($userId);
 			$data["profil"] = $profil;
-			$photos = $this->Photo_model->get_photos($userId);
+			$photos = $this->Photo_model->get_user_photos($profil["id"]);
 			$data["pics"] = $photos;
-			if (empty($profil) && $userId == $sessionId)
+			if (!$profil["idUser"] && $userId == $sessionId)
 			{
 				redirect('/profil/update', 'refresh');
 			}
@@ -59,7 +59,7 @@ class Profil extends CI_Controller
 
 			$profil = $this->P_model->get_profil($userId);
 
-			if (empty($profil)) {
+			if (!$profil["idUser"]) {
 				$this->P_model->add_profil($description, $hobbies, $interest, $situation, $sexuality, $job, $userId);
 			}
 			else {
@@ -75,5 +75,25 @@ class Profil extends CI_Controller
 
 			$this->load->view('update_profil', $profil);
 		}
+	}
+
+	public function delete_photo($photoId)
+	{
+		$sessionId = $this->session->userdata('userId');
+		$photo = $this->Photo_model->get_photo($photoId);
+		$userId = $photo->id;
+		if ($userId == $sessionId)
+		{
+			$path = photo_url($photo->name);
+			$this->load->helper("file");
+			delete_files($path);
+			$this->Photo_model->delete_photo($photoId);
+		}
+		redirect('/profil/see_profile/'.$userId);
+	}
+	public function photo($photoId)
+	{
+		$photo = $this->Photo_model->get_photo($photoId);
+		$this->load->view('photo', $photo);
 	}
 }

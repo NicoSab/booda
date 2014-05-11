@@ -35,18 +35,13 @@
 			</a>
 		</div>
 	</div>
-	<div id="wrap">
+	<div id="wrap" style="min-width:initial; width:50%;">
 		<div class="sign-page signup-page">
-			<div class="sign-title">
-				<h1>Ajouter une photo</h1>
-			</div>
-				<?php echo form_open_multipart('upload/do_upload');?>
-					<input type="file" name="userfile" size="20" />
-					<br /><br />
-					<input type="submit" class="btn btn--orange btn--lg" value="Ajouter" />
-				</form>
-			</div>
+			<div class="polaroid-images">
+				<a><img style="padding:10px" src="<?php echo photo_url($name); ?>"/></a>
+				</div>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

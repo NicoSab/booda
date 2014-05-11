@@ -84,19 +84,29 @@
 			</div>
 			<div class="profile-photos">
 				<div>
-					<h1>Photos</h1>
-				</div>
-				<div class="polaroid-images">
-				<?php
-					foreach($pics as $data) { ?>
-					<a href="<?php echo site_url('profil/photo/'.$data->id); ?>" title="Cave"><img height="200" src="images/water.jpg" alt="Cave" title="Cave" /></a>
-				<?php } ?>
+					<h1 style="float: left;line-height: 55px;margin-right: 30px;">Photos</h1>
+					<?php if ($this->session->userdata('userId') == $profil["idUser"])
+					{ ?>
+						<a href="<?php echo site_url('upload'); ?>" style="float:left" class="btn btn--orange btn--lg">Ajouter une photo</a>
+					<?php } ?>
 				</div>
 
-				<?php if ($this->session->userdata('userId') == $profil["idUser"])
-				{ ?>
-					<a href="<?php echo site_url('upload'); ?>" class="btn btn--orange btn--lg">Ajouter une photo</a>
-				<?php } ?>
+				<div class="polaroid-images">
+				<?php
+				if ($pics)
+				{
+					foreach($pics as $data) { ?>
+					<div style="position:relative">
+						<a href="<?php echo site_url('profil/photo/'.$data->id); ?>" class="pol"><img height="200" src="<?php echo photo_url($data->name); ?>"/>
+						</a>
+						<?php if ($this->session->userdata('userId') == $profil["idUser"])
+						{ ?>
+						<a href="<?php echo site_url('profil/delete_photo/'.$data->id); ?>" class="suppr btn btn--orange">Supprimer</a>
+						<?php } ?>
+					</div>
+				<?php } 
+				} ?>
+				</div>
 			</div>
 		</div>
 	</div>

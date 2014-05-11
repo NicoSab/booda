@@ -47,8 +47,9 @@ class Upload extends CI_Controller {
 		}
 		else
 		{
-			$data = array('upload_data' => $this->upload->data());
-			$this->Photo_model->add_photo($upload_path.$file_name,  $profil['id']);
+			$data = $this->upload->data();
+			$ext = $data["file_ext"];
+			$this->Photo_model->add_photo($file_name.$ext,  $profil['id']);
 			redirect('/profil/see_profile/'.$userId);
 		}
 	}

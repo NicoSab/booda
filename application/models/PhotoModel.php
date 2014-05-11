@@ -10,12 +10,38 @@ class PhotoModel extends CI_Model
 						->insert($this->table);	
 	}
 
-	public function get_photos($profilId)
+	public function get_user_photos($profilId)
+	{
+		$query = $this->db->select()
+					  ->from($this->table)
+					  ->where("idProfil", $profilId)
+					  ->get();
+
+		if ($query->num_rows() > 0) {
+			foreach ($query->result() as $row) {
+				if ($row->idProfil == $profilId) {
+					$photos[] = $row;
+				}
+            }
+            return $photos;
+		}
+		return false;
+	}
+
+	public function get_photo($photoId)
 	{
 		return $this->db->select()
 						->from($this->table)
-						->where('idProfil', $profilId)
+						->join("Profils", "Photos.idProfil = Profils.id")
+						->join("Users", "Profils.idUser = Users.id")
+						->where('Photos.id', $photoId)
 						->get()
-						->row_array();
+						->row();
+	}
+
+	public function delete_photo($photoId)
+	{
+		$this->db->where('id',$photoId)
+           ->delete($this->table);
 	}
 }

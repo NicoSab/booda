@@ -484,12 +484,16 @@ img {
 	float: right;
 	line-height: 35px;
 }
-
+.polaroid-images
+{
+	float: left;
+	width: 120%;
+}
 .polaroid-images img { 
 	display: block; 
 	width: inherit; 
 }
-.polaroid-images a
+.polaroid-images a.pol
 {
 	background: white;
 	display: inline;
@@ -507,22 +511,28 @@ img {
 	z-index:0;
     position:relative;
 }
-.polaroid-images a:after {
+.polaroid-images a.pol:after {
 	color: #333;
 	font-size: 20px;
 	content: attr(title);
 	position: relative;
 	top:15px;
 }
-.polaroid-images a:hover{
+.polaroid-images a.pol:hover{
 	-webkit-transform: rotate(0deg); 
 	-moz-transform: rotate(0deg);
         transform: rotate(0deg);
-	-webkit-transform: scale(1.2); 
-	-moz-transform: scale(1.2);
-        transform: scale(1.2);
+	-webkit-transform: scale(1.01); 
+	-moz-transform: scale(1.01);
+        transform: scale(1.01);
 	z-index:10;
-	-webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
-	-moz-box-shadow: 0 10px 20px rgba(0,0,0,.7);
-        box-shadow: 0 10px 20px rgba(0,0,0,.7);
+	-webkit-box-shadow: 0 5px 8px rgba(0, 0, 0, .3);
+	-moz-box-shadow: 0 5px 8px rgba(0,0,0,.3);
+        box-shadow: 0 5px 8px rgba(0,0,0,.3);
+}
+
+.suppr
+{
+	display: inline;
+	float: left;
 }
