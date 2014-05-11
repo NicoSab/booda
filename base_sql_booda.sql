@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Dim 11 Mai 2014 à 00:03
+-- Généré le: Dim 11 Mai 2014 à 15:03
 -- Version du serveur: 5.5.33
 -- Version de PHP: 5.5.3
 
@@ -36,7 +36,7 @@ CREATE TABLE `Conversations` (
   PRIMARY KEY (`id`),
   KEY `idUser1` (`idUser1`),
   KEY `idUser2` (`idUser2`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Vider la table avant d'insérer `Conversations`
@@ -49,7 +49,9 @@ TRUNCATE TABLE `Conversations`;
 
 INSERT INTO `Conversations` (`id`, `idUser1`, `idUser2`, `lastUpdatedDate`) VALUES
 (1, 1, 2, '2014-05-10'),
-(3, 1, 6, '2014-05-10');
+(3, 1, 6, '2014-05-10'),
+(4, 8, 8, '2014-05-11'),
+(5, 8, 7, '2014-05-11');
 
 -- --------------------------------------------------------
 
@@ -66,7 +68,7 @@ CREATE TABLE `Messages` (
   PRIMARY KEY (`id`),
   KEY `idUser` (`idUser`),
   KEY `idConversation` (`idConversation`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Vider la table avant d'insérer `Messages`
@@ -87,7 +89,17 @@ INSERT INTO `Messages` (`id`, `idUser`, `idConversation`, `createdDate`, `messag
 (9, 1, 1, '2014-05-10', '		'),
 (10, 1, 1, '2014-05-10', '		'),
 (11, 1, 1, '2014-05-10', '		'),
-(12, 1, 1, '2014-05-10', '		lol');
+(12, 1, 1, '2014-05-10', '		lol'),
+(13, 8, 4, '2014-05-11', 'salut\n'),
+(14, 8, 4, '2014-05-11', 'salut\n'),
+(15, 7, 5, '2014-05-11', 'salut'),
+(16, 8, 5, '2014-05-11', 'salut a va ?\n'),
+(17, 7, 5, '2014-05-11', 'ouiiiiiiii\n'),
+(18, 8, 5, '2014-05-11', 'test'),
+(19, 7, 5, '2014-05-11', '		'),
+(20, 8, 5, '2014-05-11', 'test'),
+(21, 8, 5, '2014-05-11', '		lol'),
+(22, 8, 5, '2014-05-11', '		ouiiiii');
 
 -- --------------------------------------------------------
 
@@ -100,7 +112,7 @@ CREATE TABLE `Photos` (
   `name` varchar(100) NOT NULL,
   `idProfil` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `idProfil` (`idProfil`)
+  KEY `idProfil` (`idProfil`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -125,7 +137,7 @@ CREATE TABLE `Profils` (
   `idUser` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idUser` (`idUser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Vider la table avant d'insérer `Profils`
@@ -137,7 +149,9 @@ TRUNCATE TABLE `Profils`;
 --
 
 INSERT INTO `Profils` (`id`, `Description`, `Hobbies`, `Interest`, `MaritalSituation`, `Sexuality`, `Job`, `idUser`) VALUES
-(1, 'test', 'test', 'Male', 'In couple', 'Heterosexuel', 'test', 1);
+(1, 'test', 'test', 'Male', 'In couple', 'Heterosexuel', 'test', 1),
+(2, 'test', 'test', 'Hommes', 'En couple', 'Hétérosexuel', 'test', 8),
+(3, 'clem', 'clem', 'Hommes', 'En couple', 'Hétérosexuel', 'clem', 7);
 
 -- --------------------------------------------------------
 
@@ -157,7 +171,7 @@ CREATE TABLE `Users` (
   `Pseudo` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Mail` (`Mail`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Vider la table avant d'insérer `Users`
@@ -171,7 +185,9 @@ TRUNCATE TABLE `Users`;
 INSERT INTO `Users` (`id`, `Pass`, `Firstname`, `Lastname`, `Sexe`, `BirthDate`, `City`, `Mail`, `Pseudo`) VALUES
 (1, 'test', 'Nicolas', 'Sabella', 'Male', '2014-05-09', 'Le Perreux Sur Marne', 'test@test.com', 'Yayap'),
 (2, 'toto', '', '', 'Female', '2013-02-03', 'Villejuif', 'lolo@lolo.com', 'Test'),
-(6, 'bla', '', '', 'Female', '2014-05-09', 'Villejuif', 'toto@toto', 'Test');
+(6, 'bla', '', '', 'Female', '2014-05-09', 'Villejuif', 'toto@toto', 'Test'),
+(7, '49c040447d066cb774f12f6134ff0b7d', 'Clementine', 'Dubois', 'Female', '2014-05-11', 'Villejuif', 'clem@clem', 'Clem'),
+(8, '698dc19d489c4e4db73e28a713eab07b', 'teste', 'teste', 'Male', '2014-05-11', 'tese', 'teste@test', 'teste');
 
 --
 -- Contraintes pour les tables exportées
@@ -206,6 +222,3 @@ ALTER TABLE `Profils`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-ALTER TABLE `booda`.`profils` 
-CHANGE COLUMN `Description` `Description` TEXT NOT NULL ,
-CHANGE COLUMN `Hobbies` `Hobbies` TEXT NOT NULL ;
