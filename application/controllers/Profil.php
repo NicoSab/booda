@@ -12,6 +12,7 @@ class Profil extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->helpers(array('url', 'assets'));
 		$this->load->model('ProfileModel', 'P_model');
+		$this->load->model('PhotoModel', 'Photo_model');
 
 		if (!$this->session->userdata('userId'))
 		{
@@ -31,7 +32,6 @@ class Profil extends CI_Controller
 			}
 			else
 			{
-
 				$this->load->view('see_profil', $profil);
 			}
 		}
@@ -73,5 +73,12 @@ class Profil extends CI_Controller
 
 			$this->load->view('update_profil', $profil);
 		}
+	}
+
+	public function delete_photo($photoId)
+	{
+		$photo = $this->Photo_model->get_photo($photoId);
+		unlink($photo['name']);
+		$this->Photo_model->delete_photo($photo_id);
 	}
 }
