@@ -29,7 +29,7 @@
 				<img src="<?php echo asset_url('img/persons.png'); ?>"/>
 				&nbsp;&nbsp;Personnes
 			</a>
-			<a href=<?php echo site_url('dating'); ?> class="dating">
+			<a href=<?php echo site_url('chat'); ?> class="dating">
 				<img src="<?php echo asset_url('img/messages.png'); ?>"/>
 				&nbsp;&nbsp;Tchat
 			</a>
@@ -41,9 +41,8 @@
 				<h1>Ajouter une photo!</h1>
 			</div>
 			<div>
-				<h4>Une photo augmente la visibilité de vôtre profil</h4>
+				<h4>Une photo augmente la visibilité de votre profil</h4>
 			</div>
-				<?php //echo $error;?>
 				<?php echo form_open_multipart('upload/do_upload');?>
 					<input type="file" name="userfile" size="20" />
 					<br /><br />

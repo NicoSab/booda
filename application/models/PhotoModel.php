@@ -10,7 +10,7 @@ class PhotoModel extends CI_Model
 						->insert($this->table);	
 	}
 
-	public function get_photo($profilId)
+	public function get_photos($profilId)
 	{
 		return $this->db->select()
 						->from($this->table)

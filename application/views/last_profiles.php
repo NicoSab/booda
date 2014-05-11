@@ -53,7 +53,7 @@
 					<div id="search">
 						<div class="search">
 							<?php
-							foreach($results as $data) {?>
+							foreach($results as $data) { ?>
 							<div class="user-card">
 								<div class="user-card__photo">
 									<div class="user-photo">

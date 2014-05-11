@@ -29,7 +29,7 @@
 				<img src="<?php echo asset_url('img/persons.png'); ?>"/>
 				&nbsp;&nbsp;Personnes
 			</a>
-			<a href=<?php echo site_url('dating'); ?> class="dating">
+			<a href=<?php echo site_url('chat'); ?> class="dating">
 				<img src="<?php echo asset_url('img/messages.png'); ?>"/>
 				&nbsp;&nbsp;Tchat
 			</a>
@@ -38,51 +38,66 @@
 	<div id="wrap">
 		<div class="profile-page">
 			<div>
-				<h1>Profil de <?php if (isset($Pseudo)) echo $Pseudo; ?> </h1>
+
+				<h1>Profil de <?php if ($profil["Pseudo"]) echo $profil["Pseudo"]; ?> </h1>
 			</div>
 			</br>
 			<label> Sexe</label>
-			<span><?php if (isset($Sexe)) echo $Sexe; ?></span>
+			<span><?php if ($profil["Sexe"]) echo $profil["Sexe"]; ?></span>
 			</br>
 			<label> Age</label>
-			<span><?php if (isset($BirthDate)) {
+			<span><?php if ($profil["BirthDate"]) {
 					$oDateNow = new DateTime();
-					$oDateBirth = new DateTime($BirthDate);
+					$oDateBirth = new DateTime($profil["BirthDate"]);
 					$oDateIntervall = $oDateNow->diff($oDateBirth);
 					echo $oDateNow->diff($oDateBirth)->format('%y ans');
 				 } ?></span>
 			</br>
 			<label> Hobbies</label>
 			<span>
-			<?php if (isset($Hobbies)) echo $Hobbies; ?></span>
+			<?php if ($profil["Hobbies"]) echo $profil["Hobbies"]; ?></span>
 			</br>
 
 			<label> Intéressé par</label>
-			<span><?php if (isset($Interest)) echo $Interest; ?></span>
+			<span><?php if ($profil["Interest"]) echo $profil["Interest"]; ?></span>
 			</br>
 
 			<label>Situation</label>
-			<span><?php if (isset($MaritalSituation)) echo $MaritalSituation; ?></span>
+			<span><?php if ($profil["MaritalSituation"]) echo $profil["MaritalSituation"]; ?></span>
 			</br>
 
 			<label>Sexualité</label>
-			<span><?php if (isset($Sexuality)) echo $Sexuality; ?></span>
+			<span><?php if ($profil["Sexuality"]) echo $profil["Sexuality"]; ?></span>
 			</br>
 
 			<label>Travail</label>
-			<span><?php if (isset($Job)) echo $Job; ?></span>
+			<span><?php if ($profil["Job"]) echo $profil["Job"]; ?></span>
 			</br>
 
 			<label>Description</label>
-			<span><?php if (isset($Description)) echo $Description; ?></span>
+			<span><?php if ($profil["Description"]) echo $profil["Description"]; ?></span>
 			</br>
-			<?php if ($this->session->userdata('userId') == $idUser)
+			<?php if ($this->session->userdata('userId') == $profil["idUser"])
 			{ ?>
 				<a href="<?php echo site_url('profil/update'); ?>" class="btn btn--orange btn--lg">Mettre à jour</a>
-				</br>
-				<a href="<?php echo site_url('upload'); ?>" class="btn btn--orange btn--lg">Ajouter une photo</a>
 			<?php } ?>
-		</div>
+			</div>
+			<div class="profile-photos">
+				<div>
+					<h1>Photos</h1>
+				</div>
+				<div class="polaroid-images">
+				<?php
+					foreach($pics as $data) { ?>
+					<a href="<?php echo site_url('profil/photo/'.$data->id); ?>" title="Cave"><img height="200" src="images/water.jpg" alt="Cave" title="Cave" /></a>
+				<?php } ?>
+				</div>
+
+				<?php if ($this->session->userdata('userId') == $profil["idUser"])
+				{ ?>
+					<a href="<?php echo site_url('upload'); ?>" class="btn btn--orange btn--lg">Ajouter une photo</a>
+				<?php } ?>
+			</div>
 		</div>
 	</div>
 </body>

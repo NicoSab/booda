@@ -36,17 +36,14 @@ class Upload extends CI_Controller {
 
 		$config['upload_path'] = $upload_path;
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '100';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
 		$config['file_name']  = $file_name;
 
 		$this->load->library('upload', $config);
 
-		if ( ! $this->upload->do_upload())
+		if (!$this->upload->do_upload())
 		{
 			$error = array('error' => $this->upload->display_errors());
-			$this->load->view('upload_photo', $profil, $error);
+			$this->load->view('upload_photo', $error);
 		}
 		else
 		{

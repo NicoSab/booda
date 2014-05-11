@@ -12,6 +12,7 @@ class Profil extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->helpers(array('url', 'assets'));
 		$this->load->model('ProfileModel', 'P_model');
+	    $this->load->model('PhotoModel', 'Photo_model');
 
 		if (!$this->session->userdata('userId'))
 		{
@@ -24,15 +25,16 @@ class Profil extends CI_Controller
 		{
 			$sessionId = $this->session->userdata('userId');
 			$profil = $this->P_model->get_profil($userId);
-
+			$data["profil"] = $profil;
+			$photos = $this->Photo_model->get_photos($userId);
+			$data["pics"] = $photos;
 			if (empty($profil) && $userId == $sessionId)
 			{
 				redirect('/profil/update', 'refresh');
 			}
 			else
 			{
-
-				$this->load->view('see_profil', $profil);
+				$this->load->view('see_profil', $data);
 			}
 		}
 		else
