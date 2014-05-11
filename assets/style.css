@@ -252,6 +252,8 @@ input.input-text, input.input-email, input.input-password, input.input-search, .
 .form__row {
 	position: relative;
 	padding: 0;
+	float: left;
+	width: 100%;
 }
 .form__row > label, .form__row > .label, .form__label {
 	display: inline-block;
@@ -265,7 +267,12 @@ input.input-text, input.input-email, input.input-password, input.input-search, .
 	display: inline-block;
 	vertical-align: middle;
 	font: 1em/1.5 Arial,sans-serif;
+}
+.signup-page .form label, .signup-page .form .label {
 	width: 124px;
+}
+.signup-page .form__row > label, .signup-page .form__row > .label, .signup-page .form__label {
+	padding-right: 11px;
 }
 .signup-page .form__label:before {
 	content: '';
