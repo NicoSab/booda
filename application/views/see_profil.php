@@ -82,7 +82,7 @@
 				</br>
 				<a href="<?php echo site_url('upload'); ?>" class="btn btn--orange btn--lg">Ajouter une photo</a>
 			<?php } ?>
-		</div>
+			</div>
 		</div>
 	</div>
 </body>
