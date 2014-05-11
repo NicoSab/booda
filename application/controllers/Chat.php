@@ -32,8 +32,6 @@ class Chat extends CI_Controller
 
 	public function conversation($convId)
 	{
-		//$this->output->set_header("refresh:30;url=".base_url()."index.php/chat/conversation/".$convId); 
-
 		$userId = $this->session->userdata('userId');
 		$message = $this->input->post('message');
 
@@ -41,9 +39,11 @@ class Chat extends CI_Controller
 			$this->M_model->add_message($userId, $convId, $message);
 
 		$messages = $this->M_model->get_messages_for_conversation($convId);
+		$users = $this->U_model->get_all_user();
 
 		$data = array();
 		$data['messages'] = $messages;
+		$data['users'] = $users;
 
 		$this->load->view('conversation', $data);
 	}

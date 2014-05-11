@@ -15,7 +15,15 @@
 	<div id="content" height="250" overflow="auto">
 		<div id="mes">
 			<?php foreach ($messages as $message):
-				echo ($message['idUser'] . ' : ' . $message['message']); ?>
+				$pseudo = '';
+				foreach ($users as $u) {
+					if (strcmp($u['id'], $message['idUser']) == 0)
+					{
+						$pseudo = $u['Pseudo'];
+						break;
+					}
+				}
+				echo ($pseudo . ' : ' . $message['message']); ?>
 			</br>
 			<?php endforeach ?>
 		</div>
