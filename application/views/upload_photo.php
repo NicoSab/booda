@@ -36,37 +36,19 @@
 		</div>
 	</div>
 	<div id="wrap">
-		<div class="profile-page">
-			<div>
-				<h1>Votre profil</h1>
+		<div class="sign-page signup-page">
+			<div class="sign-title">
+				<h1>Ajouter une photo!</h1>
 			</div>
-			<label> Hobbies</label>
-			<span>
-			<?php if (isset($Hobbies)) echo $Hobbies; ?></span>
-			</br>
-
-			<label> Intéressé par</label>
-			<span><?php if (isset($Interest)) echo $Interest; ?></span>
-			</br>
-
-			<label>Situation</label>
-			<span><?php if (isset($MaritalSituation)) echo $MaritalSituation; ?></span>
-			</br>
-
-			<label>Sexualité</label>
-			<span><?php if (isset($Sexuality)) echo $Sexuality; ?></span>
-			</br>
-
-			<label>Travail</label>
-			<span><?php if (isset($Job)) echo $Job; ?></span>
-			</br>
-
-			<label>Description</label>
-			<span><?php if (isset($Description)) echo $Description; ?></span>
-			</br>
-				<a href="<?php echo site_url('profil/update'); ?>" class="btn btn--orange btn--lg">Le mettre à jour</a>
-				</br>
-				<a href="<?php echo site_url('upload'); ?>" class="btn btn--orange btn--lg">Ajouter une photo</a>
+			<div>
+				<h4>Une photo augmente la visibilité de vôtre profil</h4>
+			</div>
+				<?php //echo $error;?>
+				<?php echo form_open_multipart('upload/do_upload');?>
+					<input type="file" name="userfile" size="20" />
+					<br /><br />
+					<input type="submit" class="btn btn--orange btn--lg" value="Ajouter" />
+				</form>
 			</div>
 		</div>
 	</div>
