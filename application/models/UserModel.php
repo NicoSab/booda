@@ -45,7 +45,7 @@ class UserModel extends CI_Model
  
     public function fetch_users($limit, $start) {
         $this->db->limit($limit, $start);
-        $query = $this->db->get($this->table);
+        $query = $this->db->order_by("Users.id", "desc")->get($this->table);
  
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
@@ -54,5 +54,72 @@ class UserModel extends CI_Model
             return $data;
         }
         return false;
+   }
+   public function search($limit, $start, $hobbies, $job, $interest, $situation, $sexuality, $sex, $agemin, $agemax)
+   {
+   		if ($limit && $start)
+	   	    $this->db->limit($limit, $start);
+   		$query = $this->db->select()
+						->from($this->table)
+						->join("Profils", "Users.id = Profils.idUser");
+		
+		if ($job)
+		{
+			$query = $query->where('Profils.Job', $job);
+		}
+		if ($interest)
+		{
+			$query = $query->where('Profils.Interest', $interest);
+
+		}
+		if ($situation)
+		{
+			$query = $query->where('Profils.MaritalSituation', $situation);
+		}
+		if ($sexuality)
+		{
+			$query = $query->where('Profils.Sexuality', $sexuality);
+		}
+		if ($sex)
+		{
+			$query = $query->where('Users.Sexe', $sex);
+		}
+		$query = $query->order_by("Users.id", "desc")->get();
+ 
+        if ($query->num_rows() > 0) {
+        	$data = null;
+            foreach ($query->result() as $row) {
+            	$failHobby = false;
+            	$failAge = false;
+
+            	if ($hobbies)
+            	{
+            		$hobbiesSearched = explode(",", $hobbies);
+            		$hobbiesRow = explode(",", $row->Hobbies);
+            		foreach ($hobbiesSearched as $h)
+            		{
+            			if (!in_array($h, $hobbiesRow))
+            			{
+            				$failHobby = true;
+            				break;
+            			}
+            		}
+            	}
+            	$oDateNow = new DateTime();
+				$oDateBirth = new DateTime($row->BirthDate);
+				$oDateIntervall = $oDateNow->diff($oDateBirth)->y;
+            	if (($agemin && $agemin > $oDateIntervall) || (($agemax && $agemax < $oDateIntervall)))
+            		$failAge = true;
+
+            	if (!$failHobby && !$failAge)
+	                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+   }
+    public function count_search($hobbies, $job, $interest, $situation, $sexuality, $sex, $agemin, $agemax)
+   {
+   		return count($this->search(null, null, $hobbies, $job, $interest, $situation, $sexuality, $sex, $agemin, $agemax));
    }
 }

@@ -37,15 +37,10 @@
 	<div id="wrap">
 		<div class="sign-page signup-page">
 			<div class="sign-title">
-				<h1 style="float: left; line-height: 44px;">Derniers bouddhistes inscrits</h1>
+				<h1 style="float: left; line-height: 44px;">Résultats de la recherche</h1>
 				<a href="<?php echo site_url('dating/search'); ?>" class="btn btn--orange" style="float:left; margin-left: 15px;">
-					Approfondir votre recherche
+					Modifiez votre recherche
 				</a>
-				<?php if ($this->session->userdata("searchExists")) { ?>
-				<a href="<?php echo site_url('dating/results'); ?>" class="btn btn--green" style="float:left; margin-left: 15px;">
-					Voir votre dernière recherche
-				</a>
-				<?php } ?>
 			</div>
 			<div style="float:left;">
 				<p><?php echo $links; ?></p>
@@ -53,6 +48,8 @@
 					<div id="search">
 						<div class="search">
 							<?php
+							if ($results)
+							{
 							foreach($results as $data) {?>
 							<div class="user-card">
 								<div class="user-card__photo">
@@ -64,7 +61,7 @@
 									</div>
 								</div>
 								<div class="user-card__section">
-									<a href="<?php echo site_url('profil/'.$data->id); ?>" class="user-name app"><?php echo $data->Pseudo; ?></a>
+									<a href="<?php echo site_url('profil/'.$data->idUser); ?>" class="user-name app"><?php echo $data->Pseudo; ?></a>
 									<span class="age"><?php $oDateNow = new DateTime();
 															$oDateBirth = new DateTime($data->BirthDate);
 															$oDateIntervall = $oDateNow->diff($oDateBirth);
@@ -72,6 +69,7 @@
 								</div>
 							</div>
 							<?php }
+							}
 							?>
 						</div>
 					</div>

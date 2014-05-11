@@ -44,7 +44,7 @@
 				<form method="post" class="form form-not-before" action="">
 					<div class="form__row">
 						<div class="form__label">
-							<label for="hobbies">Hobbies</label>
+							<label for="hobbies">Hobbies (séparez avec des virgules)</label>
 						</div>
 						<div class="form__field">
 							<textarea class="textarea" name="hobbies" rows="4" cols="50"><?php if (isset($Hobbies)) echo $Hobbies; ?></textarea>

@@ -38,8 +38,20 @@
 	<div id="wrap">
 		<div class="profile-page">
 			<div>
-				<h1>Votre profil</h1>
+				<h1>Profil de <?php if (isset($Pseudo)) echo $Pseudo; ?> </h1>
 			</div>
+			</br>
+			<label> Sexe</label>
+			<span><?php if (isset($Sexe)) echo $Sexe; ?></span>
+			</br>
+			<label> Age</label>
+			<span><?php if (isset($BirthDate)) {
+					$oDateNow = new DateTime();
+					$oDateBirth = new DateTime($BirthDate);
+					$oDateIntervall = $oDateNow->diff($oDateBirth);
+					echo $oDateNow->diff($oDateBirth)->format('%y ans');
+				 } ?></span>
+			</br>
 			<label> Hobbies</label>
 			<span>
 			<?php if (isset($Hobbies)) echo $Hobbies; ?></span>
@@ -64,10 +76,13 @@
 			<label>Description</label>
 			<span><?php if (isset($Description)) echo $Description; ?></span>
 			</br>
-				<a href="<?php echo site_url('profil/update'); ?>" class="btn btn--orange btn--lg">Le mettre à jour</a>
+			<?php if ($this->session->userdata('userId') == $idUser)
+			{ ?>
+				<a href="<?php echo site_url('profil/update'); ?>" class="btn btn--orange btn--lg">Mettre à jour</a>
 				</br>
 				<a href="<?php echo site_url('upload'); ?>" class="btn btn--orange btn--lg">Ajouter une photo</a>
-			</div>
+			<?php } ?>
+		</div>
 		</div>
 	</div>
 </body>
