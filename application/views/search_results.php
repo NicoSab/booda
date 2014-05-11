@@ -48,13 +48,14 @@
 					<div id="search">
 						<div class="search">
 							<?php
+
 							if ($results)
 							{
-							foreach($results as $data) {?>
+							foreach($results as $data) {;?>
 							<div class="user-card">
 								<div class="user-card__photo">
 									<div class="user-photo">
-										<img src="<?php if (isset($data->profilepic)) { echo $data->profilepic; } 
+										<img src="<?php if ($data->name) { echo photo_url($data->name); } 
 										else if ($data->Sexe == 'Male') { echo asset_url('img/blank_male.png'); }
 										else if ($data->Sexe == 'Female') { echo asset_url('img/blank_female.png'); }?>"
 										 class="photo" width="180" height="151"/>

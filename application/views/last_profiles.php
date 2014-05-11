@@ -42,7 +42,7 @@
 					Approfondir votre recherche
 				</a>
 				<?php if ($this->session->userdata("searchExists")) { ?>
-				<a href="<?php echo site_url('dating/results'); ?>" class="btn btn--green" style="float:left; margin-left: 15px;">
+				<a href="<?php echo site_url('dating/results'); ?>" class="btn btn--green" style="float:left; margin-left: 5px;">
 					Voir votre dernière recherche
 				</a>
 				<?php } ?>
@@ -59,7 +59,7 @@
 							<div class="user-card">
 								<div class="user-card__photo">
 									<div class="user-photo">
-										<img src="<?php if (isset($data->profilepic)) { echo $data->profilepic; } 
+										<img src="<?php if ($data->name) { echo photo_url($data->name); } 
 										else if ($data->Sexe == 'Male') { echo asset_url('img/blank_male.png'); }
 										else if ($data->Sexe == 'Female') { echo asset_url('img/blank_female.png'); }?>"
 										 class="photo" width="180" height="151"/>

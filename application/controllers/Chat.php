@@ -14,16 +14,29 @@ class Chat extends CI_Controller
 		$this->load->model('ConvModel', 'C_model');
 		$this->load->model('MessageModel', 'M_model');
 		$this->load->model('UserModel', 'U_model');
+		if (!$this->session->userdata('userId'))
+		{
+			redirect('welcome/index', 'refresh');
+		}
 	}
 	public function index()
 	{
-		$conversations = $this->C_model->get_ten_last_conversation($this->session->userdata('userId'));
-		$users = $this->U_model->get_all_user();
-		$data = array();
-		$data['conversations'] = $conversations;
-		$data['users'] = $users;
+		$conv = $this->C_model->get_last_conversation($this->session->userdata('userId'));
+		if ($conv)
+		{
+			$this->conversation($conv->id);
+		}
+		else
+		{
+			$conversations = $this->C_model->get_ten_last_conversation($this->session->userdata('userId'));
+			$users = $this->U_model->get_all_user();
 
-		$this->load->view('chat', $data);
+			$data = array();
+			$data['conversations'] = $conversations;
+			$data['users'] = $users;
+
+			$this->load->view('chat', $data);
+		}
 	}
 	public function new_conversation($userId2 = null)
 	{
@@ -35,7 +48,7 @@ class Chat extends CI_Controller
 
 			$conversation = $this->C_model->get_conversation($userId1, $userId2);
 
-			redirect('/chat/conversation/'.$conversation['id'], 'refresh');
+			redirect('/chat', 'refresh');
 		}
 	}
 
@@ -49,11 +62,13 @@ class Chat extends CI_Controller
 
 		$messages = $this->M_model->get_messages_for_conversation($convId);
 		$users = $this->U_model->get_all_user();
+		$conversations = $this->C_model->get_ten_last_conversation($this->session->userdata('userId'));
 
 		$data = array();
+		$data['conversations'] = $conversations;
 		$data['messages'] = $messages;
 		$data['users'] = $users;
 
-		$this->load->view('conversation', $data);
+		$this->load->view('chat', $data);
 	}
 }

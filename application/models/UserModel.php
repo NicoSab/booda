@@ -45,7 +45,13 @@ class UserModel extends CI_Model
  
     public function fetch_users($limit, $start) {
         $this->db->limit($limit, $start);
-        $query = $this->db->order_by("Users.id", "desc")->get($this->table);
+        $query = $this->db->select()
+						->from($this->table)
+						->join("Profils", "Users.id = Profils.idUser", "left outer")
+						->join("Photos", "Profils.id = Photos.idProfil", "left outer")
+						->order_by("Users.id", "desc")
+						->group_by("Users.id")
+						->get();
  
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
@@ -61,7 +67,8 @@ class UserModel extends CI_Model
 	   	    $this->db->limit($limit, $start);
    		$query = $this->db->select()
 						->from($this->table)
-						->join("Profils", "Users.id = Profils.idUser");
+						->join("Profils", "Users.id = Profils.idUser", "left outer")
+						->join("Photos", "Profils.id = Photos.idProfil", "left outer");
 		
 		if ($job)
 		{
@@ -84,7 +91,9 @@ class UserModel extends CI_Model
 		{
 			$query = $query->where('Users.Sexe', $sex);
 		}
-		$query = $query->order_by("Users.id", "desc")->get();
+		$query = $query->order_by("Users.id", "desc")
+					->group_by("Users.id")
+					->get();
  
         if ($query->num_rows() > 0) {
         	$data = null;

@@ -27,7 +27,6 @@ class Dating extends CI_Controller
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $data["results"] = $this->U_model->fetch_users($config["per_page"], $page);
         $data["links"] = $this->pagination->create_links();
- 
 		$this->load->view('last_profiles', $data);
 	}
 	public function search()
