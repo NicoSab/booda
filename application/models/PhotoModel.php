@@ -41,7 +41,7 @@ class PhotoModel extends CI_Model
 
 	public function delete_photo($photoId)
 	{
-		$this->db->where('id',$photoId)
+		$this->db->where('id', $photoId)
            ->delete($this->table);
 	}
 }

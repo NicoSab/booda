@@ -40,6 +40,10 @@
 			<div>
 
 				<h1>Profil de <?php if ($profil["Pseudo"]) echo $profil["Pseudo"]; ?> </h1>
+				<?php if (strcmp($profil['idUser'], $this->session->userdata('userId')) != 0) { ?>
+				<a href="<?php echo site_url('chat/new_conversation/'.$profil['idUser']); ?>" class="btn btn--green" style="margin-top:-20px">
+				Engager une discussion</a>
+				<?php } ?>
 			</div>
 			</br>
 			<label> Sexe</label>
