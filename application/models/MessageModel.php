@@ -31,6 +31,6 @@ class MessageModel extends CI_Model
 														->from($this->table)
 														->get())
 						->get()
-						->row_array();
+						->row();
 	}
 }

@@ -1,0 +1,63 @@
+<?php
+
+class User_Model_Test extends PHPUnit_Framework_TestCase { 	
+
+    private $CI; 	
+    public function setUp()
+    { 	
+		$this->CI = &get_instance();
+		$this->CI->load->model('UserModel');
+	}
+
+	public function testGetUser()
+	{
+		$u = $this->CI->UserModel->get_user('Clem', '49c040447d066cb774f12f6134ff0b7d');
+
+		$this->assertEquals(7, $u->id);
+	}
+
+	public function testGetAllUser() 
+	{
+		$users = $this->CI->UserModel->get_all_user();
+
+		$this->assertEquals(5, count($users));
+	}
+
+	public function testGetUserByEmail()
+	{
+		$u = $this->CI->UserModel->get_user_by_email('test@test.com');
+
+		$this->assertEquals('test@test.com', $u->Mail);
+	}
+
+	public function testRecordCount() 
+	{
+		$users = $this->CI->UserModel->get_all_user();
+		$count = $this->CI->UserModel->record_count();
+
+		$this->assertEquals($count, count($users));
+	}
+
+	public function testFetchUsers()
+	{
+		$users = $this->CI->UserModel->fetch_users(10, 0);
+
+		$this->assertLessThanOrEqual(10, count($users));
+	}
+
+	public function testSearch()
+	{
+		$this->CI->load->model('ProfileModel');
+		$users = $this->CI->UserModel->search(10, 0, 'clem', 'etudiant', 'Femmes', 'En couple', 'Hétérosexual', 'Female', 0, 100);
+		$result = "OK";
+
+		foreach ($users as $u) {
+			echo "ici";
+			$p = $this->CI->ProfileModel->get_profil($u->id);
+			if ($p['Hobbies'] != 'clem' || $p['Job'] == 'etudiant' || $p['Interest'] == 'Femmes'
+				|| $p['MaritalSituation'] == 'En couple' || $p['Sexuality'] == 'Hétérosexual' || $u->Sex == 'Female')
+				$result = 'NOK';
+		}
+		$this->assertEquals("OK", $result);
+	}
+}
