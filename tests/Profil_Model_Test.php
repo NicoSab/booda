@@ -7,6 +7,22 @@ class Profil_Model_Test extends PHPUnit_Framework_TestCase {
     { 	
 		$this->CI = &get_instance();
 		$this->CI->load->model('ProfileModel');
+		$this->CI->load->model('UserModel');
+	}
+
+	public function testAddProfil() 
+	{
+		$this->CI->UserModel->add_user('Essai', 'essai', 'nicolas', 'sabella', 'Male', '1992-07-08', 'Nogent', 'essai@essai');
+		$user = $this->CI->UserModel->get_user_by_email('essai@essai');
+
+		$result = $this->CI->ProfileModel->add_profil('test', 'test', 'Femmes', 'En couple', 'Hétérosexuel', 'test', $user->id);
+
+		$this->assertEquals(TRUE, $result);
+
+		$profil = $this->CI->ProfileModel->get_profil($user->id);
+
+		$this->CI->ProfileModel->delete_profil($profil['id']);
+		$this->CI->UserModel->delete_user($user->id);
 	}
 
 	public function testGetProfil()

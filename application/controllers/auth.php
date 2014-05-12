@@ -101,7 +101,6 @@ class Auth extends CI_Controller
 			{
 				$this->sendpassword($user);
 				$data['info'] = 'Mot de passe envoyé';
-				$this->load->view('forgotpassword', $data);
 			}
 			else
 				$data['error'] = 'Mail introuvable';

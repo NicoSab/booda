@@ -66,8 +66,8 @@
 		<?php } ?>
 		</div>
 		<div class="currentConv">
-			<div class="content">
-				<div class="mes">
+			<div id="content" class="content">
+				<div id="mes" class="mes">
 					<?php 
 					if (isset($messages))
 					{

@@ -9,6 +9,13 @@ class Message_Model_Test extends PHPUnit_Framework_TestCase {
 		$this->CI->load->model('MessageModel');
 	}
 
+	public function testAddMessage()
+	{
+		$result = $this->CI->MessageModel->add_message(8, 5, 'test');
+
+		$this->assertEquals(TRUE, $result);
+	}
+
 	public function testgetMessagesForConversation()
 	{
 		$messages = $this->CI->MessageModel->get_messages_for_conversation(5);

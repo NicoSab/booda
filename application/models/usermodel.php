@@ -60,9 +60,9 @@ class UserModel extends CI_Model
             return $data;
         }
         return false;
-   }
-   public function search($limit, $start, $hobbies, $job, $interest, $situation, $sexuality, $sex, $agemin, $agemax)
-   {
+   	}
+   	public function search($limit, $start, $hobbies, $job, $interest, $situation, $sexuality, $sex, $agemin, $agemax)
+   	{
    		if ($limit && $start)
 	   	    $this->db->limit($limit, $start);
    		$query = $this->db->select()
@@ -126,9 +126,15 @@ class UserModel extends CI_Model
             return $data;
         }
         return false;
-   }
-    public function count_search($hobbies, $job, $interest, $situation, $sexuality, $sex, $agemin, $agemax)
-   {
+   	}
+   	public function count_search($hobbies, $job, $interest, $situation, $sexuality, $sex, $agemin, $agemax)
+   	{
    		return count($this->search(null, null, $hobbies, $job, $interest, $situation, $sexuality, $sex, $agemin, $agemax));
-   }
+   	}
+
+   	public function delete_user ($userId)
+	{
+		$this->db->where('id', $userId)
+				->delete($this->table);
+   	}
 }
