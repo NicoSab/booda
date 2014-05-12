@@ -6,5 +6,5 @@ convertWarningsToExceptions="true"
 processIsolation="false" 
 stopOnFailure="false" 
 syntaxCheck="false" 
-verbose="true"> 
+verbose="false"> 
 </phpunit>
