@@ -51,10 +51,18 @@
 			</br>
 			<label> Age</label>
 			<span><?php if ($profil["BirthDate"]) {
-					$oDateNow = new DateTime();
-					$oDateBirth = new DateTime($profil["BirthDate"]);
-					$oDateIntervall = $oDateNow->diff($oDateBirth);
-					echo $oDateNow->diff($oDateBirth)->format('%y ans');
+					$now = getdate(time());
+				    $birth = getdate(strtotime($profil["BirthDate"]));
+
+				    $age = $now['year'] - $birth['year'];
+				    
+				    if($now['mon'] < $birth['mon'] 
+				        || ($now['mon'] == $birth['mon'] && $birth['mday'] > $now['mday']))
+				    {
+				        $age -= 1;
+				    }
+
+				    echo $age." ans";
 				 } ?></span>
 			</br>
 			<label> Hobbies</label>

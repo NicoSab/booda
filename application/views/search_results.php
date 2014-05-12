@@ -63,10 +63,18 @@
 								</div>
 								<div class="user-card__section">
 									<a href="<?php echo site_url('profil/'.$data->idUser); ?>" class="user-name app"><?php echo $data->Pseudo; ?></a>
-									<span class="age"><?php $oDateNow = new DateTime();
-															$oDateBirth = new DateTime($data->BirthDate);
-															$oDateIntervall = $oDateNow->diff($oDateBirth);
-															echo $oDateNow->diff($oDateBirth)->format('%y ans'); ?></span>
+									<span class="age"><?php $now = getdate(time());
+								    $birth = getdate(strtotime($data->BirthDate));
+
+								    $age = $now['year'] - $birth['year'];
+								    
+								    if($now['mon'] < $birth['mon'] 
+								        || ($now['mon'] == $birth['mon'] && $birth['mday'] > $now['mday']))
+								    {
+								        $age -= 1;
+								    }
+
+								    echo $age." ans"; ?></span>
 								</div>
 							</div>
 							<?php }
