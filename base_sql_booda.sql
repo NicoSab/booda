@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Dim 11 Mai 2014 à 15:03
+-- Généré le: Lun 12 Mai 2014 à 15:49
 -- Version du serveur: 5.5.33
 -- Version de PHP: 5.5.3
 
@@ -36,7 +36,7 @@ CREATE TABLE `Conversations` (
   PRIMARY KEY (`id`),
   KEY `idUser1` (`idUser1`),
   KEY `idUser2` (`idUser2`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Vider la table avant d'insérer `Conversations`
@@ -51,7 +51,16 @@ INSERT INTO `Conversations` (`id`, `idUser1`, `idUser2`, `lastUpdatedDate`) VALU
 (1, 1, 2, '2014-05-10'),
 (3, 1, 6, '2014-05-10'),
 (4, 8, 8, '2014-05-11'),
-(5, 8, 7, '2014-05-11');
+(5, 8, 7, '2014-05-11'),
+(6, 8, 1, '2014-05-11'),
+(8, 1, 2, '2014-05-12'),
+(9, 1, 2, '2014-05-12'),
+(10, 1, 2, '2014-05-12'),
+(11, 1, 2, '2014-05-12'),
+(12, 1, 2, '2014-05-12'),
+(13, 1, 2, '2014-05-12'),
+(14, 1, 2, '2014-05-12'),
+(15, 1, 2, '2014-05-12');
 
 -- --------------------------------------------------------
 
@@ -68,7 +77,7 @@ CREATE TABLE `Messages` (
   PRIMARY KEY (`id`),
   KEY `idUser` (`idUser`),
   KEY `idConversation` (`idConversation`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Vider la table avant d'insérer `Messages`
@@ -99,7 +108,16 @@ INSERT INTO `Messages` (`id`, `idUser`, `idConversation`, `createdDate`, `messag
 (19, 7, 5, '2014-05-11', '		'),
 (20, 8, 5, '2014-05-11', 'test'),
 (21, 8, 5, '2014-05-11', '		lol'),
-(22, 8, 5, '2014-05-11', '		ouiiiii');
+(22, 8, 5, '2014-05-11', '		ouiiiii'),
+(23, 8, 6, '2014-05-11', 'pl'),
+(24, 8, 5, '2014-05-12', 'test'),
+(25, 8, 5, '2014-05-12', 'test'),
+(26, 8, 5, '2014-05-12', 'test'),
+(27, 8, 5, '2014-05-12', 'test'),
+(28, 8, 5, '2014-05-12', 'test'),
+(29, 8, 5, '2014-05-12', 'test'),
+(30, 8, 5, '2014-05-12', 'test'),
+(31, 8, 5, '2014-05-12', 'test');
 
 -- --------------------------------------------------------
 
@@ -113,13 +131,21 @@ CREATE TABLE `Photos` (
   `idProfil` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idProfil` (`idProfil`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Vider la table avant d'insérer `Photos`
 --
 
 TRUNCATE TABLE `Photos`;
+--
+-- Contenu de la table `Photos`
+--
+
+INSERT INTO `Photos` (`id`, `name`, `idProfil`) VALUES
+(1, '92a08f65af73cec156d43a47c32b9096.jpg', 3),
+(25, '48a42d69293d8dcfdbb89883d785f27c.png', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -137,7 +163,7 @@ CREATE TABLE `Profils` (
   `idUser` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idUser` (`idUser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Vider la table avant d'insérer `Profils`
@@ -151,7 +177,8 @@ TRUNCATE TABLE `Profils`;
 INSERT INTO `Profils` (`id`, `Description`, `Hobbies`, `Interest`, `MaritalSituation`, `Sexuality`, `Job`, `idUser`) VALUES
 (1, 'test', 'test', 'Male', 'In couple', 'Heterosexuel', 'test', 1),
 (2, 'test', 'test', 'Hommes', 'En couple', 'Hétérosexuel', 'test', 8),
-(3, 'clem', 'clem', 'Hommes', 'En couple', 'Hétérosexuel', 'clem', 7);
+(3, 'clem', 'clem', 'Femmes', 'En couple', 'Hétérosexuel', 'etudiant', 7),
+(15, 'julie', 'julie', 'Hommes', 'Célibataire', 'Hétérosexuel', 'etudiant', 35);
 
 -- --------------------------------------------------------
 
@@ -171,7 +198,7 @@ CREATE TABLE `Users` (
   `Pseudo` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Mail` (`Mail`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
 
 --
 -- Vider la table avant d'insérer `Users`
@@ -187,7 +214,8 @@ INSERT INTO `Users` (`id`, `Pass`, `Firstname`, `Lastname`, `Sexe`, `BirthDate`,
 (2, 'toto', '', '', 'Female', '2013-02-03', 'Villejuif', 'lolo@lolo.com', 'Test'),
 (6, 'bla', '', '', 'Female', '2014-05-09', 'Villejuif', 'toto@toto', 'Test'),
 (7, '49c040447d066cb774f12f6134ff0b7d', 'Clementine', 'Dubois', 'Female', '2014-05-11', 'Villejuif', 'clem@clem', 'Clem'),
-(8, '698dc19d489c4e4db73e28a713eab07b', 'teste', 'teste', 'Male', '2014-05-11', 'tese', 'teste@test', 'teste');
+(8, '698dc19d489c4e4db73e28a713eab07b', 'teste', 'teste', 'Male', '2014-05-11', 'tese', 'teste@test', 'teste'),
+(35, '16f12f5e8379e22be995e505ebfc1b84', 'Dupond', 'Julie', 'Femme', '2014-05-01', 'Villejuif', 'gmail@gmail', 'Julie');
 
 --
 -- Contraintes pour les tables exportées
