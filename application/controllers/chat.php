@@ -11,9 +11,9 @@ class Chat extends CI_Controller
 		$this->load->library('session');
 		$this->load->library('form_validation');
 		$this->load->helpers(array('url', 'assets'));
-		$this->load->model('ConvModel', 'C_model');
-		$this->load->model('MessageModel', 'M_model');
-		$this->load->model('UserModel', 'U_model');
+		$this->load->model('convmodel', 'C_model');
+		$this->load->model('messagemodel', 'M_model');
+		$this->load->model('usermodel', 'U_model');
 		if (!$this->session->userdata('userId'))
 		{
 			redirect('welcome/index', 'refresh');

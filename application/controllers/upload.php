@@ -9,8 +9,8 @@ class Upload extends CI_Controller {
 		$this->load->library('session');
 		$this->load->library('form_validation');
 		$this->load->helpers(array('url', 'assets'));
-		$this->load->model('ProfileModel', 'P_model');
-		$this->load->model('PhotoModel', 'Photo_model');
+		$this->load->model('profilemodel', 'P_model');
+		$this->load->model('photomodel', 'Photo_model');
 		$this->load->helper(array('form', 'url'));
 
 		if (!$this->session->userdata('userId'))
