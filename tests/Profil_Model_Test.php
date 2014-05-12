@@ -9,6 +9,13 @@ class Profil_Model_Test extends PHPUnit_Framework_TestCase {
 		$this->CI->load->model('ProfileModel');
 	}
 
+	public function testAddProfil() 
+	{
+		$result = $this->CI->ProfileModel->add_profil('test', 'test', 'Femmes', 'En couple', 'Hétérosexuel', 'test', 11);
+
+		$this->assertEquals(TRUE, $result);
+	}
+
 	public function testGetProfil()
 	{
 		$p = $this->CI->ProfileModel->get_profil(7);

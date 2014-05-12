@@ -9,6 +9,13 @@ class Conv_Model_Test extends PHPUnit_Framework_TestCase {
 		$this->CI->load->model('ConvModel');
 	}
 
+	public function testCreateConversation ()
+	{
+		$result = $this->CI->ConvModel->create_conversation(1, 2);
+
+		$this->assertEquals(TRUE, $result);
+	}
+
 	public function testGetTenLastConversations()
 	{
 		$convs = $this->CI->ConvModel->get_ten_last_conversation(7);

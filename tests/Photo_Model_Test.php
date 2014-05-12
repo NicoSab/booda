@@ -9,6 +9,13 @@ class Photo_Model_Test extends PHPUnit_Framework_TestCase {
 		$this->CI->load->model('PhotoModel');
 	}
 
+	public function testAddPhoto()
+	{
+		$result = $this->CI->PhotoModel->add_photo("test", 7);
+
+		$this->assertEquals(FALSE, $result);
+	}
+
 	public function testGetUserPhotos()
 	{
 		$photos = $this->CI->PhotoModel->get_user_photos(7);
