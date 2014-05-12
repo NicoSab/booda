@@ -37,4 +37,10 @@ class ProfileModel extends CI_Model
 						->where('idUser', $userId)
 						->update($this->table);
 	}
+
+	public function delete_profil($profilId)
+	{
+		$this->db->where('id', $profilId)
+           		->delete($this->table);
+	}
 }

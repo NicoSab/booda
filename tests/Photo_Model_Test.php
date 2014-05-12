@@ -18,12 +18,13 @@ class Photo_Model_Test extends PHPUnit_Framework_TestCase {
 
 	public function testGetUserPhotos()
 	{
-		$photos = $this->CI->PhotoModel->get_user_photos(7);
+		$photos = $this->CI->PhotoModel->get_user_photos(3);
+		$array = (array) $photos;
 		$result = "OK";
 
-		foreach ($photos as $p)
+		foreach ($array as $p)
 		{
-			if ($p->userId != 7)
+			if ($p->idProfil != 3)
 				$result = "NOK";
 		}
 

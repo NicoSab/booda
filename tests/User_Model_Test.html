@@ -11,9 +11,13 @@ class User_Model_Test extends PHPUnit_Framework_TestCase {
 
 	public function testAddUser()
 	{
-		$result = $this->CI->UserModel->add_user('Essai', 'essai', 'nicolas', 'sabella', 'Male', '1992-07-08', 'Nogent', 'essai@essai');
+		$result = $this->CI->UserModel->add_user('Essai', 'essai', 'nicolas', 'sabella', 'Homme', '1992-07-08', 'Nogent', 'essai@essai');
 
 		$this->assertEquals(TRUE, $result);
+
+		$user = $this->CI->UserModel->get_user_by_email('essai@essai');
+		$this->CI->UserModel->delete_user($user->id);
+
 	}
 
 	public function testGetUser()
@@ -55,15 +59,17 @@ class User_Model_Test extends PHPUnit_Framework_TestCase {
 	public function testSearch()
 	{
 		$this->CI->load->model('ProfileModel');
-		$users = $this->CI->UserModel->search(10, 0, 'clem', 'etudiant', 'Femmes', 'En couple', 'Hétérosexual', 'Female', 0, 100);
+		$users = $this->CI->UserModel->search(10, 0, 'julie', 'etudiant', 'Hommes', 'Célibataire', 'Hétérosexuel', 'Femme', 0, 100);
+		$array = (array) $users;
 		$result = "OK";
 
-		foreach ($users as $u) {
-			echo "ici";
-			$p = $this->CI->ProfileModel->get_profil($u->id);
-			if ($p['Hobbies'] != 'clem' || $p['Job'] == 'etudiant' || $p['Interest'] == 'Femmes'
-				|| $p['MaritalSituation'] == 'En couple' || $p['Sexuality'] == 'Hétérosexual' || $u->Sex == 'Female')
+		foreach ($array as $u) {
+			$p = $this->CI->ProfileModel->get_profil($u->idUser);
+			print_r($p);
+			if ($p['Hobbies'] != 'julie' || $p['Job'] != 'etudiant' || $p['Interest'] != 'Hommes'
+				|| $p['MaritalSituation'] != 'Célibataire' || $p['Sexuality'] != 'Hétérosexuel' || $p['Sexe'] != 'Femme') {
 				$result = 'NOK';
+			}
 		}
 		$this->assertEquals("OK", $result);
 	}
