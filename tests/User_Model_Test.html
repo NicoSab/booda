@@ -31,7 +31,7 @@ class User_Model_Test extends PHPUnit_Framework_TestCase {
 	{
 		$users = $this->CI->UserModel->get_all_user();
 
-		$this->assertEquals(6, count($users));
+		$this->assertEquals(8, count($users));
 	}
 
 	public function testGetUserByEmail()
