@@ -9,7 +9,7 @@ class Auth extends CI_Controller
 		$this->load->database();
 		$this->load->library('session');
 		$this->load->library('form_validation');
-		$this->load->model('UserModel', 'A_model');
+		$this->load->model('usermodel', 'A_model');
 	}
 
 	public function index()

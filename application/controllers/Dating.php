@@ -7,7 +7,7 @@ class Dating extends CI_Controller
 		parent::__construct();
 		$this->load->database();
 		$this->load->library('session');
-		$this->load->model('UserModel', 'U_model');
+		$this->load->model('usermodel', 'U_model');
 		$this->load->library("pagination");
 
 		if (!$this->session->userdata('userId'))
